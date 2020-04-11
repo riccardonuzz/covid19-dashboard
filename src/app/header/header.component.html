@@ -1,0 +1,7 @@
+<header>
+    <h1>COVID-19 Stats</h1>
+    <app-toggle-button (onToggle)="onToggle($event)" [enabled]="enabled">
+        <i *ngIf="!enabled" class="lnr lnr-sun"></i>
+        <i *ngIf="enabled" class="lnr lnr-moon"></i>
+    </app-toggle-button>
+</header>

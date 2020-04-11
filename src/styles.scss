@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~linearicons/dist/web-font/style.css";
+@font-face {
+  font-family: "OpenSans-Light";
+  src: url("assets/fonts/OpenSans-Light.ttf");
+  }
+
+body {
+  margin: 0 100px;
+  background-color: var(--theme-background);
+  font-family: 'OpenSans-Light';
+  height: 88vh;
+}

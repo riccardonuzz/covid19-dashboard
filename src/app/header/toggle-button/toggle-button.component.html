@@ -1,0 +1,12 @@
+<div class="toggle" (click)="onClick()">
+    <input class="toggle-input" type="checkbox" />
+    <button
+        class="toggle-btn {{className}}"
+        [ngClass]="{ 'toggle-btn-on' : enabled, 'toggle-btn-off': !enabled }"
+        [attr.aria-expanded]="enabled"
+    >
+        <div [ngClass]="{ 'icon-container-on' : enabled, 'icon-container-off': !enabled }">
+            <ng-content></ng-content>
+        </div>
+    </button>
+</div>
