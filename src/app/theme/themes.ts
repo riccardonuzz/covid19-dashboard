@@ -13,7 +13,7 @@ export type ThemesCollection = {
 
 export const themes: ThemesCollection = {
     lightTheme: {
-        '--theme-background': 'white',
+        '--theme-background': '#cce7e8',
         '--theme-primary-text-color': 'black',
         '--theme-primary-color': 'white'
     },

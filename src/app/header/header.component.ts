@@ -9,7 +9,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  protected enabled: boolean;
+  enabled: boolean;
   
   constructor(private themeService: ThemeService) { }
 

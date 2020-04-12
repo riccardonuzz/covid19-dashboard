@@ -12,3 +12,10 @@ body {
   font-family: 'OpenSans-Light';
   height: 88vh;
 }
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 1000px) {
+  body {
+    margin: 0 30px;
+  }
+}
