@@ -28,5 +28,4 @@ export class GenericWidgetComponent implements OnInit {
       // (<AdComponent>componentRef.instance).data = adItem.data;
     }
   }
-
 }

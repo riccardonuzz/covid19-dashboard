@@ -1,35 +1,43 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeaderComponent } from './header/header.component';
+import { ToggleButtonComponent } from './header/toggle-button/toggle-button.component';
+import { GridsterModule } from 'angular-gridster2';
+import { ThemeService } from './theme/theme.service';
+import { DashboardService } from './dashboard/dashboard.service';
 
-// describe('AppComponent', () => {
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       imports: [
-//         RouterTestingModule
-//       ],
-//       declarations: [
-//         AppComponent
-//       ],
-//     }).compileComponents();
-//   }));
+describe('AppComponent', () => {
+    let fixture: ComponentFixture<AppComponent>;
+    let app: AppComponent;
 
-//   it('should create the app', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.debugElement.componentInstance;
-//     expect(app).toBeTruthy();
-//   });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [
+                GridsterModule
+            ],
+            declarations: [
+                AppComponent,
+                HeaderComponent,
+                ToggleButtonComponent,
+                DashboardComponent
+            ],
+        }).compileComponents();
 
-//   it(`should have as title 'covid-dashboard'`, () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     const app = fixture.debugElement.componentInstance;
-//     expect(app.title).toEqual('covid-dashboard');
-//   });
+        fixture = TestBed.createComponent(AppComponent);
+        app = fixture.debugElement.componentInstance;
+    }));
 
-//   it('should render title', () => {
-//     const fixture = TestBed.createComponent(AppComponent);
-//     fixture.detectChanges();
-//     const compiled = fixture.debugElement.nativeElement;
-//     expect(compiled.querySelector('.content span').textContent).toContain('covid-dashboard app is running!');
-//   });
-// });
+    it('Should create the app', () => {
+        expect(app).toBeTruthy();
+    });
+
+    it(`Should render inner components`, () => {
+        expect(fixture.debugElement.nativeElement.querySelector('.app-wrapper'))
+            .toBeTruthy();
+        expect(fixture.debugElement.nativeElement.querySelector('app-header'))
+            .toBeTruthy();
+        expect(fixture.debugElement.nativeElement.querySelector('app-dashboard'))
+            .toBeTruthy();
+    });
+});

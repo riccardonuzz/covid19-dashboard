@@ -1,25 +1,55 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { GridsterConfig, GridsterModule } from 'angular-gridster2';
+import { WidgetAComponent } from './widgets/widget-a/widget-a.component';
+import { DashboardService } from './dashboard.service';
+import { GenericWidgetComponent } from './widgets/generic-widget/generic-widget.component';
+import { GenericWidgetDirective } from './widgets/generic-widget/generic-widget-directive/generic-widget.directive';
 
-// describe('DashboardComponent', () => {
-//   let component: DashboardComponent;
-//   let fixture: ComponentFixture<DashboardComponent>;
+class MockedDashboardService {
+    getOptions() {
+        return {} as GridsterConfig;
+    }
 
-//   beforeEach(async(() => {
-//     TestBed.configureTestingModule({
-//       declarations: [ DashboardComponent ]
-//     })
-//     .compileComponents();
-//   }));
+    getDashboard() {
+        return [WidgetAComponent.config];
+    }
+}
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(DashboardComponent);
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+describe('DashboardComponent', () => {
+    let component: DashboardComponent;
+    let fixture: ComponentFixture<DashboardComponent>;
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
-// });
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            imports: [ GridsterModule ],
+            declarations: [
+                DashboardComponent,
+                GenericWidgetComponent,
+                GenericWidgetDirective
+            ],
+            providers: [
+                { provide: DashboardService, useClass: MockedDashboardService }
+            ]
+        }).compileComponents();
+    }));
+
+    beforeEach(() => {
+        fixture = TestBed.createComponent(DashboardComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
+
+    it('Should get dashboard correctly', () => {
+        expect(component.dashboard).toEqual([WidgetAComponent.config]);
+    });
+
+    it('Should get options correctly', () => {
+        expect(component.options).toEqual({});
+    });
+});

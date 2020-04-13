@@ -10,7 +10,7 @@ import { WidgetRegistry } from './widgets/models/widget-registry';
 })
 export class DashboardService {
   private options: GridsterConfig;
-  private dashboard: Array<GridsterItem>;
+  private dashboard: GridsterItem[];
   private dashboardUpdate$: Subject<GridsterItem> = new Subject();
 
   constructor() {
@@ -89,11 +89,11 @@ export class DashboardService {
     }
   }
 
-  public getOptions() {
+  public getOptions(): GridsterConfig {
     return this.options;
   }
 
-  public getDasboard() {
+  public getDashboard(): GridsterItem[] {
     return this.dashboard;
   }
 

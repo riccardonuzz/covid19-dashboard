@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GridsterItem } from 'angular-gridster2';
 
 @Component({
   selector: 'app-widget-c',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./widget-c.component.scss']
 })
 export class WidgetCComponent implements OnInit {
-  static config = {
+  static config: GridsterItem = {
     cols: 2,
     rows: 1,
     y: 1,
