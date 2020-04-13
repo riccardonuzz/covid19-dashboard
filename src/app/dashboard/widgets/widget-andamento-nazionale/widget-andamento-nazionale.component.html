@@ -1,0 +1,14 @@
+<app-card *ngIf="andamentoNazionale" title="Andamento nazionale">
+    <div class="section">
+        <div>Totale casi</div>
+        <div class="totale-casi">{{andamentoNazionale.totale_casi}}</div>
+    </div>
+    <div class="section">
+        <div>Totale casi</div>
+        <div>{{andamentoNazionale.variazione_totale_positivi}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-clock"></i>Ultimo aggiornamento</div>
+        {{andamentoNazionale.data | date:'medium':'+0300':'it-it'}}
+    </div>
+</app-card>

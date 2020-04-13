@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
 import { DashboardService } from './dashboard.service';
-import { WidgetAComponent } from './widgets/widget-a/widget-a.component';
+import { WidgetAndamentoNazionaleComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
 import { WidgetBComponent } from './widgets/widget-b/widget-b.component';
 import { WidgetRegistry } from './widgets/models/widget-registry';
 import { GridsterItemComponent, GridsterItem } from 'angular-gridster2';
 
 describe('DashboardService', () => {
     const defaultWidgetsConfig = [
-        { ...WidgetAComponent.config },
+        { ...WidgetAndamentoNazionaleComponent.config },
         { ...WidgetBComponent.config }
     ];
 
@@ -33,7 +33,7 @@ describe('DashboardService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({});
         service = TestBed.inject(DashboardService);
-        WidgetAComponent.config = defaultWidgetsConfig[0];
+        WidgetAndamentoNazionaleComponent.config = defaultWidgetsConfig[0];
         WidgetBComponent.config = defaultWidgetsConfig[1];
     });
 
@@ -50,11 +50,11 @@ describe('DashboardService', () => {
     });
 
     it('Should initialize dashboard configuration from localStorage', () => {
-        WidgetAComponent.config.x = 2;
+        WidgetAndamentoNazionaleComponent.config.x = 2;
         WidgetBComponent.config.y = 0;
 
         const mockedDashboardConfig = [
-            WidgetAComponent.config,
+            WidgetAndamentoNazionaleComponent.config,
             WidgetBComponent.config,
         ];
 
@@ -81,31 +81,31 @@ describe('DashboardService', () => {
     });
 
     it('Should change layout on itemResize()', () => {
-        WidgetAComponent.config.x = 2;
-        WidgetAComponent.config.y = 4;
+        WidgetAndamentoNazionaleComponent.config.x = 2;
+        WidgetAndamentoNazionaleComponent.config.y = 4;
 
         service['dashboard'] = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
 
         service['dashboardUpdate$'].subscribe((item: GridsterItem) => {
-            expect(item).toEqual(WidgetAComponent.config);
-            expect(service.getDashboard()).toContain(WidgetAComponent.config);
+            expect(item).toEqual(WidgetAndamentoNazionaleComponent.config);
+            expect(service.getDashboard()).toContain(WidgetAndamentoNazionaleComponent.config);
         });
 
-        service['itemResize'](WidgetAComponent.config, {} as GridsterItemComponent);
+        service['itemResize'](WidgetAndamentoNazionaleComponent.config, {} as GridsterItemComponent);
     });
 
 
     it('Should change layout on itemResize()', () => {
-        WidgetAComponent.config.x = 2;
-        WidgetAComponent.config.y = 4;
+        WidgetAndamentoNazionaleComponent.config.x = 2;
+        WidgetAndamentoNazionaleComponent.config.y = 4;
 
         service['dashboard'] = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
 
         service['dashboardUpdate$'].subscribe((item: GridsterItem) => {
-            expect(item).toEqual(WidgetAComponent.config);
-            expect(service.getDashboard()).toContain(WidgetAComponent.config);
+            expect(item).toEqual(WidgetAndamentoNazionaleComponent.config);
+            expect(service.getDashboard()).toContain(WidgetAndamentoNazionaleComponent.config);
         });
 
-        service['itemChange'](WidgetAComponent.config, {} as GridsterItemComponent);
+        service['itemChange'](WidgetAndamentoNazionaleComponent.config, {} as GridsterItemComponent);
     });
 });

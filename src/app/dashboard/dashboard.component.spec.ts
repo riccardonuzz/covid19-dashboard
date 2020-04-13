@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { GridsterConfig, GridsterModule } from 'angular-gridster2';
-import { WidgetAComponent } from './widgets/widget-a/widget-a.component';
+import { WidgetAndamentoNazionaleComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
 import { DashboardService } from './dashboard.service';
 import { GenericWidgetComponent } from './widgets/generic-widget/generic-widget.component';
 import { GenericWidgetDirective } from './widgets/generic-widget/generic-widget-directive/generic-widget.directive';
@@ -13,7 +13,7 @@ class MockedDashboardService {
     }
 
     getDashboard() {
-        return [WidgetAComponent.config];
+        return [WidgetAndamentoNazionaleComponent.config];
     }
 }
 
@@ -46,7 +46,7 @@ describe('DashboardComponent', () => {
     });
 
     it('Should get dashboard correctly', () => {
-        expect(component.dashboard).toEqual([WidgetAComponent.config]);
+        expect(component.dashboard).toEqual([WidgetAndamentoNazionaleComponent.config]);
     });
 
     it('Should get options correctly', () => {
