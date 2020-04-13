@@ -6,6 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./widget-a.component.scss']
 })
 export class WidgetAComponent implements OnInit {
+  static config = {
+    cols: 2,
+    rows: 1,
+    y: 0,
+    x: 0,
+    type: 'WIDGET_A'
+  };
+
   constructor() { }
 
   ngOnInit(): void {

@@ -8,9 +8,8 @@ describe('ToggleButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ToggleButtonComponent ]
-    })
-    .compileComponents();
+      declarations: [ToggleButtonComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -19,7 +18,32 @@ describe('ToggleButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('Should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('Should correctly set className', () => {
+    component.className = 'exampleClassName';
+    fixture.detectChanges();
+    const element: HTMLElement = fixture.nativeElement;
+    const button = element.querySelector('.exampleClassName');
+    expect(button).toBeTruthy();
+  });
+
+  it('Should correctly emit enabled/disabled value', () => {
+    spyOn(component.onToggle, 'emit');
+    component.enabled = true;
+    fixture.detectChanges();
+    component.onClick();
+    fixture.detectChanges();
+    expect(component.enabled).toBeFalsy();
+    expect(component.onToggle.emit).toHaveBeenCalledWith(false);
+
+    component.enabled = false;
+    fixture.detectChanges();
+    component.onClick();
+    fixture.detectChanges();
+    expect(component.enabled).toBeTruthy();
+    expect(component.onToggle.emit).toHaveBeenCalledWith(true);
   });
 });

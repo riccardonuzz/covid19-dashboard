@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '../theme/theme.service';
 import { SupportedThemes } from '../theme/themes';
 import { take } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,16 +11,17 @@ import { take } from 'rxjs/operators';
 })
 export class HeaderComponent implements OnInit {
   enabled: boolean;
-  
+  themeSubscription: Subscription;
+
   constructor(private themeService: ThemeService) { }
 
   ngOnInit() {
-    this.themeService.getActiveTheme()
+    this.themeSubscription = this.themeService.getActiveTheme()
       .pipe(take(1))
       .subscribe((activeTheme) => {
         if (activeTheme === SupportedThemes.LIGHT_THEME)
           this.enabled = false;
-        else 
+        else
           this.enabled = true;
       })
   }
@@ -31,6 +33,11 @@ export class HeaderComponent implements OnInit {
     } else {
       this.themeService.setActiveTheme(SupportedThemes.LIGHT_THEME);
     }
+  }
+
+  ngOnDestroy() {
+    if (this.themeSubscription)
+      this.themeSubscription.unsubscribe();
   }
 
 }

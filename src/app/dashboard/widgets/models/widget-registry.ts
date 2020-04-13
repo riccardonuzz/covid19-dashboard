@@ -15,9 +15,9 @@ export class DynamicWidget {
 
 export class WidgetRegistry {
     private static widgetList: DynamicWidget[] = [
-        new DynamicWidget('widget-a', WidgetAComponent),
-        new DynamicWidget('widget-b', WidgetBComponent),
-        new DynamicWidget('widget-c', WidgetCComponent)
+        new DynamicWidget(WidgetAComponent.config.type, WidgetAComponent),
+        new DynamicWidget(WidgetBComponent.config.type, WidgetBComponent),
+        new DynamicWidget(WidgetCComponent.config.type, WidgetCComponent)
     ];
 
     static getWidgetList() {

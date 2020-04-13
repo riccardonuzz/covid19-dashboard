@@ -7,6 +7,7 @@ import { SupportedThemes } from './themes';
 })
 export class ThemeService {
   private activeTheme = new BehaviorSubject(SupportedThemes.LIGHT_THEME);
+  private THEME_KEY = 'currentTheme';
 
   constructor() { }
 
@@ -16,11 +17,11 @@ export class ThemeService {
 
   public setActiveTheme(name: SupportedThemes) {
     this.activeTheme.next(name);
-    localStorage.setItem('currentTheme', name);
+    localStorage.setItem(this.THEME_KEY, name);
   }
 
   public initializeTheme() {
-    const savedTheme = localStorage.getItem('currentTheme') as SupportedThemes;
+    const savedTheme = localStorage.getItem(this.THEME_KEY) as SupportedThemes;
     if (savedTheme) {
       this.setActiveTheme(savedTheme);
     }

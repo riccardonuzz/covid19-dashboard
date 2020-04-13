@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
-import { GridsterConfig, GridsterItem, DisplayGrid, GridType, CompactType } from 'angular-gridster2';
+import { GridsterConfig, GridsterItem, DisplayGrid, GridType, CompactType, GridsterItemComponent } from 'angular-gridster2';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+import { WidgetRegistry } from './widgets/models/widget-registry';
 
 
 @Injectable({
@@ -8,13 +11,9 @@ import { GridsterConfig, GridsterItem, DisplayGrid, GridType, CompactType } from
 export class DashboardService {
   private options: GridsterConfig;
   private dashboard: Array<GridsterItem>;
+  private dashboardUpdate$: Subject<GridsterItem> = new Subject();
 
   constructor() {
-    // this.options = {
-    //   itemChangeCallback: DashboardComponent.itemChange,
-    //   itemResizeCallback: DashboardComponent.itemResize,
-    // };
-
     this.options = {
       gridType: GridType.Fit,
       compactType: CompactType.None,
@@ -26,9 +25,9 @@ export class DashboardService {
       outerMarginLeft: null,
       useTransformPositioning: true,
       mobileBreakpoint: 640,
-      minCols: 1,
+      minCols: 6,
       maxCols: 6,
-      minRows: 1,
+      minRows: 6,
       maxRows: 6,
       maxItemCols: 100,
       minItemCols: 1,
@@ -67,25 +66,27 @@ export class DashboardService {
       displayGrid: DisplayGrid.None,
       disableWindowResize: false,
       disableWarnings: false,
-      scrollToNewItems: false
+      scrollToNewItems: false,
+      itemChangeCallback: this.itemChange.bind(this),
+      itemResizeCallback: this.itemResize.bind(this),
     };
 
-    this.dashboard = [
-      { cols: 2, rows: 1, y: 0, x: 0, type: 'widget-a' },
-      { cols: 2, rows: 2, y: 0, x: 2, type: 'widget-b' },
-      { cols: 2, rows: 1, y: 1, x: 0, type: 'widget-c' },
-      // { cols: 2, rows: 1, y: 0, x: 0 },
-      // { cols: 2, rows: 2, y: 0, x: 2, hasContent: true },
-      // { cols: 1, rows: 1, y: 0, x: 4 },
-      // { cols: 1, rows: 1, y: 2, x: 5 },
-      // { cols: 1, rows: 1, y: 1, x: 0 },
-      // { cols: 1, rows: 1, y: 1, x: 0 },
-      // { cols: 2, rows: 2, y: 3, x: 5, minItemRows: 2, minItemCols: 2, label: 'Min rows & cols = 2' },
-      // { cols: 2, rows: 2, y: 2, x: 0, maxItemRows: 2, maxItemCols: 2, label: 'Max rows & cols = 2' },
-      // { cols: 2, rows: 1, y: 2, x: 2, dragEnabled: true, resizeEnabled: true, label: 'Drag&Resize Enabled' },
-      // { cols: 1, rows: 1, y: 2, x: 4, dragEnabled: false, resizeEnabled: false, label: 'Drag&Resize Disabled' },
-      // { cols: 1, rows: 1, y: 2, x: 6 }
-    ];
+    this.dashboardUpdate$
+      .pipe(
+        debounceTime(1000)
+      )
+      .subscribe((item: GridsterItem) => {
+        localStorage.setItem('dashboardLayout', JSON.stringify(this.dashboard));
+      });
+  }
+
+  public initializeDashboard() {
+    const dashboardLayout = JSON.parse(localStorage.getItem('dashboardLayout')) as GridsterItem[];
+    if (dashboardLayout && dashboardLayout.length > 0) {
+      this.dashboard = dashboardLayout;
+    } else {
+      this.loadDefaultDashboardConfiguration();
+    }
   }
 
   public getOptions() {
@@ -96,15 +97,19 @@ export class DashboardService {
     return this.dashboard;
   }
 
-  static itemChange(item, itemComponent) {
-    console.info('itemChanged', item, itemComponent);
+  private loadDefaultDashboardConfiguration() {
+    this.dashboard = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
   }
 
-  static itemResize(item, itemComponent) {
-    console.info('itemResized', item, itemComponent);
+  private itemChange(item: GridsterItem, itemComponent: GridsterItemComponent) {
+    this.dashboardUpdate$.next(item);
   }
 
-  changedOptions() {
+  private itemResize(item: GridsterItem, itemComponent: GridsterItemComponent) {
+    this.dashboardUpdate$.next(item);
+  }
+
+  private changedOptions() {
     this.options.api.optionsChanged();
   }
 }
