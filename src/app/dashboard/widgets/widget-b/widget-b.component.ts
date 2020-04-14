@@ -1,12 +1,16 @@
-import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked, AfterContentChecked, AfterContentInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked, AfterContentChecked, AfterContentInit, Input, ViewEncapsulation } from '@angular/core';
 import { GridsterItem } from 'angular-gridster2';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { DashboardService } from '../../dashboard.service';
+import { Observable, Subscription } from 'rxjs';
+import { DataService } from '../../data.service';
+import { AndamentoNazionale } from '../models/andamento-nazionale';
 
 @Component({
   selector: 'app-widget-b',
   templateUrl: './widget-b.component.html',
-  styleUrls: ['./widget-b.component.scss']
+  styleUrls: ['./widget-b.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WidgetBComponent implements OnInit {
   static config: GridsterItem = {
@@ -17,100 +21,75 @@ export class WidgetBComponent implements OnInit {
     type: 'WIDGET_B'
   };
 
+  @Input() dashboardUpdate$: Observable<GridsterItem>;
   @ViewChild('lineChart', { static: true }) lineChartRef;
+  private dashboardUpdateSubscription: Subscription;
 
-  multi = [
-    {
-      "name": "Germany",
-      "series": [
-        {
-          "name": "1990",
-          "value": 62000000
-        },
-        {
-          "name": "2010",
-          "value": 73000000
-        },
-        {
-          "name": "2011",
-          "value": 89400000
-        }
-      ]
-    },
-
-    {
-      "name": "USA",
-      "series": [
-        {
-          "name": "1990",
-          "value": 250000000
-        },
-        {
-          "name": "2010",
-          "value": 309000000
-        },
-        {
-          "name": "2011",
-          "value": 311000000
-        }
-      ]
-    },
-
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "1990",
-          "value": 58000000
-        },
-        {
-          "name": "2010",
-          "value": 50000020
-        },
-        {
-          "name": "2011",
-          "value": 58000000
-        }
-      ]
-    },
-    {
-      "name": "UK",
-      "series": [
-        {
-          "name": "1990",
-          "value": 57000000
-        },
-        {
-          "name": "2010",
-          "value": 62000000
-        }
-      ]
-    }
-  ];
-
-  // options
+  // Chart Options
   legend: boolean = true;
+  legendTitle: string = 'Leggenda';
   showLabels: boolean = true;
   animations: boolean = true;
-  xAxis: boolean = true;
+  xAxis: boolean = false;
   yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
-  showXAxisLabel: boolean = true;
+  showYAxisLabel: boolean = false;
+  showXAxisLabel: boolean = false;
   xAxisLabel: string = 'Year';
   yAxisLabel: string = 'Population';
   timeline: boolean = true;
-
+  showGridLines: boolean = false;
+  chartData = [];
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#5AA454', '#E44D25', '#CFC0BB']
   };
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    setTimeout(() => this.lineChartRef.update(), 100);
-    this.dashboardService.getDashboardUpdate().subscribe((dashboardUpdate: GridsterItem) => {
+    this.dashboardUpdateSubscription = this.dashboardUpdate$.subscribe((dashboardUpdate: GridsterItem) => {
       this.lineChartRef.update();
     });
+
+    this.dataService.getAndamentoNazionale()
+      .subscribe((andamentoNazionale: AndamentoNazionale[]) => {
+        this.mapDataToChart(andamentoNazionale);
+      });
+  }
+
+  mapDataToChart(andamentoNazionale: AndamentoNazionale[]) {
+    const andamentoTotalePositivi = {
+      name: "Totale positivi",
+      series: []
+    };
+    const andamentoDeceduti = {
+      name: "Totale deceduti",
+      series: []
+    };
+    const andamentoDimessiGuariti = {
+      name: "Totale dimessi/guariti",
+      series: []
+    };
+
+    andamentoNazionale.forEach((andamentoNazionale: AndamentoNazionale) => {
+      andamentoTotalePositivi.series.push({
+        name: andamentoNazionale.data,
+        value: andamentoNazionale.totale_positivi
+      });
+      andamentoDeceduti.series.push({
+        name: andamentoNazionale.data,
+        value: andamentoNazionale.deceduti
+      });
+      andamentoDimessiGuariti.series.push({
+        name: andamentoNazionale.data,
+        value: andamentoNazionale.dimessi_guariti
+      });
+    });
+
+    this.chartData = [
+      andamentoTotalePositivi,
+      andamentoDeceduti,
+      andamentoDimessiGuariti
+    ];
   }
 
   onSelect(data): void {
@@ -125,4 +104,8 @@ export class WidgetBComponent implements OnInit {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
+  ngOnDestroy() {
+    if (this.dashboardUpdateSubscription)
+      this.dashboardUpdateSubscription.unsubscribe();
+  }
 }

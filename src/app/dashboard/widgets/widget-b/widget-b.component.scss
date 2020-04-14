@@ -1,3 +1,29 @@
-.line-chart {
-    fill: var(--theme-primary-text-color);
+.chart-container {
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    .line-chart {
+        fill: var(--theme-primary-text-color);
+
+    }
+    
+    .line-chart {
+        .legend-label {
+            color: var(--theme-primary-text-color) !important;
+
+            &:hover {
+                color: var(--theme-primary-text-color) !important;
+            }
+
+            ngx-charts-legend-entry {
+                span.active > .legend-label-text {
+                    color: yellow !important;
+                }
+            }
+
+        }   
+    }
+
+
 }
+

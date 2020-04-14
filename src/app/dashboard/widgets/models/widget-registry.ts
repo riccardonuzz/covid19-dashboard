@@ -2,14 +2,18 @@ import { WidgetStatisticheGeneraliComponent } from '../widget-statistiche-genera
 import { WidgetBComponent } from '../widget-b/widget-b.component';
 import { WidgetCComponent } from '../widget-c/widget-c.component';
 import { Type } from '@angular/core';
+import { Observable } from 'rxjs';
+import { GridsterItem } from 'angular-gridster2';
 
 export class DynamicWidget {
     name: string;
     component: Type<any>;
+    dashboardUpdate$?: Observable<GridsterItem>;
 
-    constructor(name: string, component: Type<any>) {
+    constructor(name: string, component: Type<any>, dashboardUpdate$?: Observable<GridsterItem>) {
         this.name = name;
         this.component = component;
+        this.dashboardUpdate$ = dashboardUpdate$;
     }
 }
 
