@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { DashboardService } from './dashboard.service';
 import { WidgetStatisticheGeneraliComponent } from './widgets/widget-statistiche-generali/widget-statistiche-generali.component';
-import { WidgetBComponent } from './widgets/widget-b/widget-b.component';
+import { WidgetBComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
 import { WidgetRegistry } from './widgets/models/widget-registry';
 import { GridsterItemComponent, GridsterItem } from 'angular-gridster2';
 

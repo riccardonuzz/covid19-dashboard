@@ -1,5 +1,5 @@
 import { WidgetStatisticheGeneraliComponent } from '../widget-statistiche-generali/widget-statistiche-generali.component';
-import { WidgetBComponent } from '../widget-b/widget-b.component';
+import { WidgetBComponent } from '../widget-andamento-nazionale/widget-andamento-nazionale.component';
 import { WidgetCComponent } from '../widget-c/widget-c.component';
 import { Type } from '@angular/core';
 import { Observable } from 'rxjs';

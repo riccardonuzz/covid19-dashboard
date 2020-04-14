@@ -18,7 +18,7 @@ export class WidgetStatisticheGeneraliComponent implements OnInit {
     y: 0,
     x: 0,
     compactEnabled: true,
-    type: 'WIDGET_ANDAMENTO_NAZIONALE'
+    type: 'WIDGET_STATISTICHE_GENERALI'
   };
 
   andamentoNazionale: AndamentoNazionale = null;

@@ -26,7 +26,7 @@ i {
     }
 
     .totale-casi-positivi {
-        color: yellow;
+        color: var(--theme-highlight-color);
         @extend .big-title;
     }
 }

@@ -1,15 +1,13 @@
-import { Component, OnInit, ViewChild, AfterViewInit, AfterViewChecked, AfterContentChecked, AfterContentInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ViewEncapsulation } from '@angular/core';
 import { GridsterItem } from 'angular-gridster2';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { DashboardService } from '../../dashboard.service';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../../data.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
 
 @Component({
-  selector: 'app-widget-b',
-  templateUrl: './widget-b.component.html',
-  styleUrls: ['./widget-b.component.scss'],
+  selector: 'app-widget-andamento-nazionale',
+  templateUrl: './widget-andamento-nazionale.component.html',
+  styleUrls: ['./widget-andamento-nazionale.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class WidgetBComponent implements OnInit {
@@ -18,7 +16,7 @@ export class WidgetBComponent implements OnInit {
     rows: 2,
     y: 0,
     x: 2,
-    type: 'WIDGET_B'
+    type: 'WIDGET_ANDAMENTO_NAZIONALE'
   };
 
   @Input() dashboardUpdate$: Observable<GridsterItem>;

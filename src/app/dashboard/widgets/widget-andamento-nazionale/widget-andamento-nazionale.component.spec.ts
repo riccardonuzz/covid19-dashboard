@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetBComponent } from './widget-b.component';
+import { WidgetBComponent } from './widget-andamento-nazionale.component';
 
 // describe('WidgetBComponent', () => {
 //   let component: WidgetBComponent;

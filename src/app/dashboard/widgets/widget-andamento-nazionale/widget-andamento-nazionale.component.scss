@@ -17,7 +17,7 @@
 
             ngx-charts-legend-entry {
                 span.active > .legend-label-text {
-                    color: yellow !important;
+                    color: var(--theme-highlight-color) !important;
                 }
             }
 
