@@ -12,9 +12,13 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
   public getAndamentoNazionaleLatest(): Observable<AndamentoNazionale> {
-    return this.httpClient.get('dpc-covid19-ita-andamento-nazionale-latest.json')
+    return this.httpClient.get<AndamentoNazionale>('dpc-covid19-ita-andamento-nazionale-latest.json')
       .pipe(
         map(andamentoNazionale => andamentoNazionale[0])
       );
+  }
+
+  public getAndamentoNazionale(): Observable<AndamentoNazionale[]> {
+    return this.httpClient.get<AndamentoNazionale[]>('dpc-covid19-ita-andamento-nazionale.json');
   }
 }

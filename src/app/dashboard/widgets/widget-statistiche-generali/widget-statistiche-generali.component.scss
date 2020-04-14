@@ -1,0 +1,41 @@
+i {
+    margin-right: 10px;
+}
+
+.big-title {
+    font-size: 35pt;
+    font-weight: 800;
+}
+
+.section {
+    margin-bottom: 10px;
+    text-align: center;
+
+    .totale-casi {
+        @extend .big-title;
+    }
+
+    .totale-guariti {
+        color: green;
+        @extend .big-title;
+    }
+
+    .totale-deceduti {
+        color: red;
+        @extend .big-title;
+    }
+
+    .totale-casi-positivi {
+        color: yellow;
+        @extend .big-title;
+    }
+}
+
+.bottom {
+    margin-top: 50px;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    right: 0;
+    left: 0;
+}

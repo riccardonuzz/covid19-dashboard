@@ -4,16 +4,20 @@ import { DataService } from '../../data.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
 
 @Component({
-  selector: 'app-widget-andamento-nazionale',
-  templateUrl: './widget-andamento-nazionale.component.html',
-  styleUrls: ['./widget-andamento-nazionale.component.scss']
+  selector: 'app-widget-statistiche-generali',
+  templateUrl: './widget-statistiche-generali.component.html',
+  styleUrls: ['./widget-statistiche-generali.component.scss']
 })
-export class WidgetAndamentoNazionaleComponent implements OnInit {
+export class WidgetStatisticheGeneraliComponent implements OnInit {
   static config: GridsterItem = {
     cols: 1,
-    rows: 4,
+    rows: 5,
+    minItemCols: 1,
+    maxItemCols: 1,
+    minItemRows: 5,
     y: 0,
     x: 0,
+    compactEnabled: true,
     type: 'WIDGET_ANDAMENTO_NAZIONALE'
   };
 

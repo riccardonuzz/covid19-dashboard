@@ -38,8 +38,8 @@ export class DashboardService {
       defaultItemCols: 1,
       defaultItemRows: 1,
       fixedColWidth: 105,
-      fixedRowHeight: 105,
-      keepFixedHeightInMobile: false,
+      fixedRowHeight: 110,
+      keepFixedHeightInMobile: true,
       keepFixedWidthInMobile: false,
       scrollSensitivity: 10,
       scrollSpeed: 20,
@@ -97,6 +97,10 @@ export class DashboardService {
     return this.dashboard;
   }
 
+  public getDashboardUpdate() {
+    return this.dashboardUpdate$.asObservable();
+  }
+  
   private loadDefaultDashboardConfiguration() {
     this.dashboard = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
   }
@@ -112,4 +116,5 @@ export class DashboardService {
   private changedOptions() {
     this.options.api.optionsChanged();
   }
+
 }

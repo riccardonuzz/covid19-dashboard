@@ -24,8 +24,7 @@ export class GenericWidgetComponent implements OnInit {
       const componentFactory = this.componentFactoryResolver.resolveComponentFactory(widgetToBeLoaded.component);
       const viewContainerRef = this.widgetHost.viewContainerRef;
       viewContainerRef.clear();
-      const componentRef = viewContainerRef.createComponent(componentFactory);
-      // (<AdComponent>componentRef.instance).data = adItem.data;
+      viewContainerRef.createComponent(componentFactory);
     }
   }
 }

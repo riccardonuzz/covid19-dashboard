@@ -1,17 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { ThemeModule } from './theme/theme.module';
 import { GridsterModule } from 'angular-gridster2';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { ToggleButtonComponent } from './header/toggle-button/toggle-button.component';
 import { CardComponent } from './dashboard/widgets/card/card.component';
-import { WidgetAndamentoNazionaleComponent } from './dashboard/widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
+import { WidgetStatisticheGeneraliComponent } from './dashboard/widgets/widget-statistiche-generali/widget-statistiche-generali.component';
 import { WidgetBComponent } from './dashboard/widgets/widget-b/widget-b.component';
 import { WidgetCComponent } from './dashboard/widgets/widget-c/widget-c.component';
 import { GenericWidgetComponent } from './dashboard/widgets/generic-widget/generic-widget.component';
@@ -30,7 +32,7 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     HeaderComponent,
     ToggleButtonComponent,
     CardComponent,
-    WidgetAndamentoNazionaleComponent,
+    WidgetStatisticheGeneraliComponent,
     WidgetBComponent,
     WidgetCComponent,
     GenericWidgetComponent,
@@ -41,7 +43,9 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     AppRoutingModule,
     ThemeModule,
     GridsterModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxChartsModule,
+    NoopAnimationsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -50,7 +54,7 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
   }],
   bootstrap: [AppComponent],
   entryComponents: [
-    WidgetAndamentoNazionaleComponent,
+    WidgetStatisticheGeneraliComponent,
     WidgetBComponent,
     WidgetCComponent
   ]

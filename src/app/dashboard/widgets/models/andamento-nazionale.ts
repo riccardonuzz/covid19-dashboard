@@ -1,5 +1,5 @@
 export interface AndamentoNazionale {
-    Vdata: Date;
+    data: Date;
     stato: string;
     ricoverati_con_sintomi: number;
     terapia_intensiva: number;
@@ -10,7 +10,7 @@ export interface AndamentoNazionale {
     nuovi_positivi: number;
     dimessi_guariti: number;
     deceduti: number;
-   Vtotale_casi: number;
+    totale_casi: number;
     tamponi: number;
     note_it: string;
     note_en: string;

@@ -1,0 +1,38 @@
+<app-card *ngIf="andamentoNazionale" title="Andamento nazionale">
+    <div class="section">
+        <div>Totale casi</div>
+        <div class="totale-casi">{{andamentoNazionale.totale_casi}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-warning"></i>Totale casi positivi</div>
+        <div class="totale-casi-positivi">{{andamentoNazionale.totale_positivi}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-exit"></i>Totale dimessi/guariti</div>
+        <div class="totale-guariti">{{andamentoNazionale.dimessi_guariti}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-cross-circle"></i>Totale deceduti</div>
+        <div class="totale-deceduti">{{andamentoNazionale.deceduti}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-plus-circle"></i>Nuovi casi positivi</div>
+        <div>+ {{andamentoNazionale.variazione_totale_positivi}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-heart-pulse"></i>In terapia intensiva</div>
+        <div>{{andamentoNazionale.terapia_intensiva}}</div>
+    </div>
+    <div class="section">
+        <div><i class="lnr lnr-cross-circle"></i>Tamponi effettuati</div>
+        <div>{{andamentoNazionale.tamponi}}</div>
+    </div>
+    <div class="section">
+    </div>
+    <div class="section">
+    </div>
+    <div class="section bottom">
+        <div><i class="lnr lnr-clock"></i>Ultimo aggiornamento</div>
+        {{andamentoNazionale.data | date:'medium':'+0300':'it-it'}}
+    </div>
+</app-card>

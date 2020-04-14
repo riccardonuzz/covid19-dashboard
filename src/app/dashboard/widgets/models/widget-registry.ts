@@ -1,4 +1,4 @@
-import { WidgetAndamentoNazionaleComponent } from '../widget-andamento-nazionale/widget-andamento-nazionale.component';
+import { WidgetStatisticheGeneraliComponent } from '../widget-statistiche-generali/widget-statistiche-generali.component';
 import { WidgetBComponent } from '../widget-b/widget-b.component';
 import { WidgetCComponent } from '../widget-c/widget-c.component';
 import { Type } from '@angular/core';
@@ -15,7 +15,7 @@ export class DynamicWidget {
 
 export class WidgetRegistry {
     private static widgetList: DynamicWidget[] = [
-        new DynamicWidget(WidgetAndamentoNazionaleComponent.config.type, WidgetAndamentoNazionaleComponent),
+        new DynamicWidget(WidgetStatisticheGeneraliComponent.config.type, WidgetStatisticheGeneraliComponent),
         new DynamicWidget(WidgetBComponent.config.type, WidgetBComponent),
         new DynamicWidget(WidgetCComponent.config.type, WidgetCComponent)
     ];
