@@ -2,14 +2,14 @@ import { TestBed } from '@angular/core/testing';
 
 import { DashboardService } from './dashboard.service';
 import { WidgetStatisticheGeneraliComponent } from './widgets/widget-statistiche-generali/widget-statistiche-generali.component';
-import { WidgetBComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
+import { WidgetAndamentoNazionaleComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
 import { WidgetRegistry } from './widgets/models/widget-registry';
 import { GridsterItemComponent, GridsterItem } from 'angular-gridster2';
 
 describe('DashboardService', () => {
     const defaultWidgetsConfig = [
         { ...WidgetStatisticheGeneraliComponent.config },
-        { ...WidgetBComponent.config }
+        { ...WidgetAndamentoNazionaleComponent.config }
     ];
 
     let service: DashboardService;
@@ -34,7 +34,7 @@ describe('DashboardService', () => {
         TestBed.configureTestingModule({});
         service = TestBed.inject(DashboardService);
         WidgetStatisticheGeneraliComponent.config = defaultWidgetsConfig[0];
-        WidgetBComponent.config = defaultWidgetsConfig[1];
+        WidgetAndamentoNazionaleComponent.config = defaultWidgetsConfig[1];
     });
 
     it('Should be created', () => {
@@ -51,11 +51,11 @@ describe('DashboardService', () => {
 
     it('Should initialize dashboard configuration from localStorage', () => {
         WidgetStatisticheGeneraliComponent.config.x = 2;
-        WidgetBComponent.config.y = 0;
+        WidgetAndamentoNazionaleComponent.config.y = 0;
 
         const mockedDashboardConfig = [
             WidgetStatisticheGeneraliComponent.config,
-            WidgetBComponent.config,
+            WidgetAndamentoNazionaleComponent.config,
         ];
 
         mockedLocalStorage.setItem('dashboardLayout', JSON.stringify(mockedDashboardConfig));

@@ -10,7 +10,7 @@ import { AndamentoNazionale } from '../models/andamento-nazionale';
   styleUrls: ['./widget-andamento-nazionale.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WidgetBComponent implements OnInit {
+export class WidgetAndamentoNazionaleComponent implements OnInit {
   static config: GridsterItem = {
     cols: 2,
     rows: 2,

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetBComponent } from './widget-andamento-nazionale.component';
+import { WidgetAndamentoNazionaleComponent } from './widget-andamento-nazionale.component';
 
-// describe('WidgetBComponent', () => {
-//   let component: WidgetBComponent;
-//   let fixture: ComponentFixture<WidgetBComponent>;
+// describe('WidgetAndamentoNazionaleComponent', () => {
+//   let component: WidgetAndamentoNazionaleComponent;
+//   let fixture: ComponentFixture<WidgetAndamentoNazionaleComponent>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ WidgetBComponent ]
+//       declarations: [ WidgetAndamentoNazionaleComponent ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(WidgetBComponent);
+//     fixture = TestBed.createComponent(WidgetAndamentoNazionaleComponent);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });
