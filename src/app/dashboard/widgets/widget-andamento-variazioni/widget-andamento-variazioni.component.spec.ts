@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WidgetCComponent } from './widget-c.component';
+import { WidgetAndamentoVariazioni } from './widget-andamento-variazioni.component';
 
-// describe('WidgetCComponent', () => {
-//   let component: WidgetCComponent;
-//   let fixture: ComponentFixture<WidgetCComponent>;
+// describe('WidgetAndamentoVariazioni', () => {
+//   let component: WidgetAndamentoVariazioni;
+//   let fixture: ComponentFixture<WidgetAndamentoVariazioni>;
 
 //   beforeEach(async(() => {
 //     TestBed.configureTestingModule({
-//       declarations: [ WidgetCComponent ]
+//       declarations: [ WidgetAndamentoVariazioni ]
 //     })
 //     .compileComponents();
 //   }));
 
 //   beforeEach(() => {
-//     fixture = TestBed.createComponent(WidgetCComponent);
+//     fixture = TestBed.createComponent(WidgetAndamentoVariazioni);
 //     component = fixture.componentInstance;
 //     fixture.detectChanges();
 //   });

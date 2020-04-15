@@ -1,0 +1,21 @@
+<app-card title="Variazione giornaliera">
+    <div actions>
+        <app-tab [tabs]="tabs" (tabChange)="onTabChange($event)">
+        </app-tab>
+    </div>
+    <div class="chart-container" body>
+        <ngx-charts-bar-vertical
+            #barChart
+            class="bar-chart"
+            [scheme]="colorScheme"
+            [results]="chartData"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [animations]="animations"
+        >
+        </ngx-charts-bar-vertical>
+    </div>
+</app-card>

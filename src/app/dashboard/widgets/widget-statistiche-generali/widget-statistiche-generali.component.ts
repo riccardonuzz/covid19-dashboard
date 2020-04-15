@@ -26,9 +26,10 @@ export class WidgetStatisticheGeneraliComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-    this.dataService.getAndamentoNazionaleLatest()
-      .subscribe((andamentoNazionale: AndamentoNazionale) => {
-        this.andamentoNazionale = andamentoNazionale;
+    this.dataService.getAndamentoNazionale()
+      .subscribe((andamentoNazionale: AndamentoNazionale[]) => {
+        if (andamentoNazionale.length > 0)
+          this.andamentoNazionale = andamentoNazionale[andamentoNazionale.length - 1];
       });
   }
 }

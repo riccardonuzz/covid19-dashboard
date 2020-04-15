@@ -6,6 +6,10 @@ import { WidgetStatisticheGeneraliComponent } from './widgets/widget-statistiche
 import { DashboardService } from './dashboard.service';
 import { GenericWidgetComponent } from './widgets/generic-widget/generic-widget.component';
 import { GenericWidgetDirective } from './widgets/generic-widget/generic-widget-directive/generic-widget.directive';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { of } from 'rxjs';
+import { CardComponent } from '@swimlane/ngx-charts';
+import { WidgetAndamentoNazionaleComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
 
 class MockedDashboardService {
     getOptions() {
@@ -15,6 +19,11 @@ class MockedDashboardService {
     getDashboard() {
         return [WidgetStatisticheGeneraliComponent.config];
     }
+
+    getDashboardUpdate() {
+        of({});
+    }
+
 }
 
 describe('DashboardComponent', () => {
@@ -23,11 +32,14 @@ describe('DashboardComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [ GridsterModule ],
+            imports: [HttpClientTestingModule, GridsterModule],
             declarations: [
                 DashboardComponent,
+                CardComponent,
                 GenericWidgetComponent,
-                GenericWidgetDirective
+                GenericWidgetDirective,
+                WidgetStatisticheGeneraliComponent,
+                WidgetAndamentoNazionaleComponent
             ],
             providers: [
                 { provide: DashboardService, useClass: MockedDashboardService }
@@ -41,7 +53,7 @@ describe('DashboardComponent', () => {
         fixture.detectChanges();
     });
 
-    it('should create', () => {
+    it('Should create', () => {
         expect(component).toBeTruthy();
     });
 

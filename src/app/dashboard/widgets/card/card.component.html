@@ -1,8 +1,11 @@
 <div class="card">
     <div class="card-content">
-        <div class="card-title">
-            {{title}}
+        <div class="card-header">
+            <div class="card-title">
+                {{title}}
+            </div>
+            <ng-content select="[actions]"></ng-content>
         </div>
-        <ng-content></ng-content>
+        <ng-content select="[body]"></ng-content>
     </div>
 </div>

@@ -4,8 +4,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { ToggleButtonComponent } from './header/toggle-button/toggle-button.component';
 import { GridsterModule } from 'angular-gridster2';
-import { ThemeService } from './theme/theme.service';
-import { DashboardService } from './dashboard/dashboard.service';
+import { CardComponent } from '@swimlane/ngx-charts';
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 describe('AppComponent', () => {
     let fixture: ComponentFixture<AppComponent>;
@@ -14,10 +15,13 @@ describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
-                GridsterModule
+                GridsterModule,
+                BrowserModule,
+                CommonModule
             ],
             declarations: [
                 AppComponent,
+                CardComponent,
                 HeaderComponent,
                 ToggleButtonComponent,
                 DashboardComponent

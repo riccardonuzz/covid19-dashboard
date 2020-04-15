@@ -1,0 +1,31 @@
+[actions] {
+    margin-top: 10px;
+}
+
+.chart-container {
+    width: 100%;
+    height: calc(100% - 80px);
+
+
+    .bar-chart {
+        fill: var(--theme-primary-text-color);
+
+    }
+    
+    .bar-chart {
+        .legend-label {
+            color: var(--theme-primary-text-color) !important;
+
+            &:hover {
+                color: var(--theme-primary-text-color) !important;
+            }
+
+            ngx-charts-legend-entry {
+                span.active > .legend-label-text {
+                    color: var(--theme-highlight-color) !important;
+                }
+            }
+
+        }   
+    }
+}

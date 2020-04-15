@@ -1,0 +1,12 @@
+<span 
+    *ngFor="let tab of tabs; let i = index"
+    (click)="onTabChange(tab.id)"
+    class="tab"
+    [ngClass]="{
+        'rounded-left': i === 0,
+        'rounded-right': i === tabs.length -1,
+        'active': tab.id === selected
+    }"
+>
+    {{tab.name}}
+</span>

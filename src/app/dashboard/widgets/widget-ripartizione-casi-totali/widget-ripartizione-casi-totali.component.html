@@ -1,0 +1,17 @@
+<app-card title="Ripartizione casi totali">
+    <div class="chart-container" body>
+        <ngx-charts-pie-chart
+            #pieChart
+            class="pie-chart"
+            [scheme]="colorScheme"
+            [results]="chartData"
+            [gradient]="gradient"
+            [legend]="showLegend"
+            [legendPosition]="legendPosition"
+            [labels]="showLabels"
+            [doughnut]="isDoughnut"
+            [animations]="animations"
+        >
+        </ngx-charts-pie-chart>
+    </div>
+</app-card>

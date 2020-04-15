@@ -8,10 +8,16 @@
         padding: 10px;
         height: 100%;
 
-        .card-title {
-            font-size: 18pt;
-            font-weight: 600;
-            margin-bottom: 10px;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+
+            .card-title {
+                font-size: 18pt;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
         }
+
     }
 }
