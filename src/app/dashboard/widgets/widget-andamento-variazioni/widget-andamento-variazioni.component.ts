@@ -6,6 +6,8 @@ import { Observable, Subscription } from 'rxjs';
 import { Tab } from '../tab/tab';
 import { SelectedData } from '../models/SelectedData';
 import { ChartData } from '../models/chart';
+import { SupportedThemes, themes } from 'src/app/theme/themes';
+import { ThemeService } from 'src/app/theme/theme.service';
 
 @Component({
   selector: 'app-widget-andamento-variazioni',
@@ -27,7 +29,7 @@ export class WidgetAndamentoVariazioni implements OnInit {
 
   // Chart Options
   legend: boolean = false;
-  legendTitle: string = 'Leggenda';
+  legendTitle: string = 'Legenda';
   showLabels: boolean = false;
   animations: boolean = false;
   xAxis: boolean = false;
@@ -36,7 +38,7 @@ export class WidgetAndamentoVariazioni implements OnInit {
   showXAxisLabel: boolean = false;
   showGridLines: boolean = false;
   colorScheme = {
-    domain: ['#5AA454']
+    domain: []
   };
 
   // Chart data
@@ -57,9 +59,15 @@ export class WidgetAndamentoVariazioni implements OnInit {
     name: "Deceduti"
   }];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private themeService: ThemeService) { }
 
   ngOnInit() {
+    this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
+      this.colorScheme = {
+        domain: [themes[activeTheme]['--theme-chart-palette-1']]
+      }
+    });
+
     this.dashboardUpdateSubscription = this.dashboardUpdate$.subscribe((dashboardUpdate: GridsterItem) => {
       this.barChartRef.update();
     });
@@ -75,7 +83,7 @@ export class WidgetAndamentoVariazioni implements OnInit {
   mapVariazionePositiviToChart(andamentoNazionale: AndamentoNazionale[]) {
     this.variazionePositivi = andamentoNazionale.map((singleAndamentoNazionale: AndamentoNazionale) => ({
       name: singleAndamentoNazionale.data.toString(),
-      value: singleAndamentoNazionale.variazione_totale_positivi
+      value: singleAndamentoNazionale.nuovi_positivi
     }));
     this.chartData = this.variazionePositivi;
   }

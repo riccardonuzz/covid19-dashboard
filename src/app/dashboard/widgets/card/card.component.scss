@@ -13,11 +13,13 @@
             justify-content: space-between;
 
             .card-title {
-                font-size: 18pt;
+                font-size: 15pt;
                 font-weight: 600;
                 margin-bottom: 10px;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
             }
         }
-
     }
 }

@@ -1,14 +1,17 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { GridsterItem } from 'angular-gridster2';
 import { Observable, Subscription } from 'rxjs';
 import { ChartData } from '../models/chart';
 import { DataService } from '../../data.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
+import { ThemeService } from 'src/app/theme/theme.service';
+import { SupportedThemes, themes } from 'src/app/theme/themes';
 
 @Component({
   selector: 'app-widget-ripartizione-casi-totali',
   templateUrl: './widget-ripartizione-casi-totali.component.html',
-  styleUrls: ['./widget-ripartizione-casi-totali.component.scss']
+  styleUrls: ['./widget-ripartizione-casi-totali.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
   static config: GridsterItem = {
@@ -29,6 +32,7 @@ export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
   showLabels: boolean = true;
   isDoughnut: boolean = false;
   legendPosition: string = 'below';
+  legendTitle: string = 'Legenda';
   animations: boolean = false;
 
   single = [
@@ -44,22 +48,32 @@ export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
       "name": "France",
       "value": 7200000
     },
-      {
+    {
       "name": "UK",
       "value": 6200000
     }
   ];
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: []
   };
 
   // Chart data
   chartData: ChartData[] = [];
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private themeService: ThemeService) { }
 
   ngOnInit() {
+    this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
+      this.colorScheme = {
+        domain: [
+          themes[activeTheme]['--theme-chart-palette-1'],
+          themes[activeTheme]['--theme-chart-palette-2'],
+          themes[activeTheme]['--theme-chart-palette-3']
+        ]
+      }
+    });
+
     this.dashboardUpdateSubscription = this.dashboardUpdate$.subscribe((dashboardUpdate: GridsterItem) => {
       this.pieChartRef.update();
     });

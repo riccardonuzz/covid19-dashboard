@@ -15,7 +15,7 @@ export class DashboardService {
 
   constructor() {
     this.options = {
-      gridType: GridType.Fit,
+      gridType: GridType.VerticalFixed,
       compactType: CompactType.None,
       margin: 10,
       outerMargin: true,
@@ -27,8 +27,8 @@ export class DashboardService {
       mobileBreakpoint: 640,
       minCols: 6,
       maxCols: 6,
-      minRows: 6,
-      maxRows: 6,
+      minRows: 9,
+      maxRows: 9,
       maxItemCols: 100,
       minItemCols: 1,
       maxItemRows: 100,

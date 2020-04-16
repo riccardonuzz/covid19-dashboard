@@ -42,14 +42,13 @@ i {
 
 [body] {
     max-height: 70%;
-    overflow: hidden;
-    &:hover {
-        overflow: auto;
-    }
+    // overflow: hidden;
+    overflow: auto;
+    
 }
 
 /*
- *  STYLE 1
+ *  Scroll bar style
  */
 
 [body]::-webkit-scrollbar-track

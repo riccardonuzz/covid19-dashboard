@@ -3,6 +3,8 @@ import { GridsterItem } from 'angular-gridster2';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../../data.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
+import { ThemeService } from 'src/app/theme/theme.service';
+import { SupportedThemes, themes } from 'src/app/theme/themes';
 
 @Component({
   selector: 'app-widget-andamento-nazionale',
@@ -25,7 +27,7 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
 
   // Chart Options
   legend: boolean = true;
-  legendTitle: string = 'Leggenda';
+  legendTitle: string = 'Legenda';
   showLabels: boolean = true;
   animations: boolean = true;
   xAxis: boolean = false;
@@ -38,12 +40,22 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
   showGridLines: boolean = false;
   chartData = [];
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB']
+    domain: []
   };
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private themeService: ThemeService) { }
 
   ngOnInit() {
+    this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
+      this.colorScheme = {
+        domain: [
+          themes[activeTheme]['--theme-chart-palette-1'],
+          themes[activeTheme]['--theme-chart-palette-2'],
+          themes[activeTheme]['--theme-chart-palette-3']
+        ]
+      }
+    });
+
     this.dashboardUpdateSubscription = this.dashboardUpdate$.subscribe((dashboardUpdate: GridsterItem) => {
       this.lineChartRef.update();
     });

@@ -1,20 +1,24 @@
 .tab {
-    border: 1px solid var(--theme-primary-text-color);
-    padding: 3px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 13px;
+    padding-left: 9px;
     cursor: pointer;
-
+    color:  var(--theme-primary-text-color-contrast);
+    font-size: 16px;
+    background-color: var(--theme-background);
     &:hover {
-        background-color: #5aa454;
+        background-color: var(--theme-chart-palette-1);
     }
 }
 
-.tab:nth-child(even) {
-    border-left: 0px;
-    border-right: 0px;
-}
+// .tab:nth-child(even) {
+//     border-left: 0px;
+//     border-right: 0px;
+// }
 
 .active {
-    background-color: #5aa454;
+    background-color: var(--theme-chart-palette-1);
 }
 
 .rounded-left {

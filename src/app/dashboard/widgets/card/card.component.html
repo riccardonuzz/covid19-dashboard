@@ -1,9 +1,10 @@
 <div class="card">
     <div class="card-content">
         <div class="card-header">
-            <div class="card-title">
+            <span class="card-title">
+                <ng-content select="[title-icon]"></ng-content>
                 {{title}}
-            </div>
+            </span>
             <ng-content select="[actions]"></ng-content>
         </div>
         <ng-content select="[body]"></ng-content>

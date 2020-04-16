@@ -1,5 +1,6 @@
 <app-card title="Ripartizione casi totali">
-    <div class="chart-container" body>
+    <i class="lnr lnr-pie-chart" title-icon></i>
+    <div class="pie-chart-container" body>
         <ngx-charts-pie-chart
             #pieChart
             class="pie-chart"
@@ -7,6 +8,7 @@
             [results]="chartData"
             [gradient]="gradient"
             [legend]="showLegend"
+            [legendTitle]="legendTitle"
             [legendPosition]="legendPosition"
             [labels]="showLabels"
             [doughnut]="isDoughnut"

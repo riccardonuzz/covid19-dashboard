@@ -25,6 +25,12 @@ import localeIt from '@angular/common/locales/it';
 import localeItExtra from '@angular/common/locales/extra/it';
 import { TabComponent } from './dashboard/widgets/tab/tab.component';
 import { WidgetRipartizioneCasiTotaliComponent } from './dashboard/widgets/widget-ripartizione-casi-totali/widget-ripartizione-casi-totali.component';
+import { WidgetTotaleCasiComponent } from './dashboard/widgets/widget-totale-casi/widget-totale-casi.component';
+import { WidgetTotalePositiviComponent } from './dashboard/widgets/widget-totale-positivi/widget-totale-positivi.component';
+import { WidgetTotaleGuaritiComponent } from './dashboard/widgets/widget-totale-guariti/widget-totale-guariti.component';
+import { WidgetTotaleDecedutiComponent } from './dashboard/widgets/widget-totale-deceduti/widget-totale-deceduti.component';
+import { WidgetTotaleTerapiaIntensivaComponent } from './dashboard/widgets/widget-totale-terapia-intensiva/widget-totale-terapia-intensiva.component';
+import { WidgetTotaleTamponiComponent } from './dashboard/widgets/widget-totale-tamponi/widget-totale-tamponi.component';
 registerLocaleData(localeIt, 'it-IT', localeItExtra);
 
 @NgModule({
@@ -40,7 +46,13 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     GenericWidgetComponent,
     GenericWidgetDirective,
     TabComponent,
-    WidgetRipartizioneCasiTotaliComponent
+    WidgetRipartizioneCasiTotaliComponent,
+    WidgetTotaleCasiComponent,
+    WidgetTotalePositiviComponent,
+    WidgetTotaleGuaritiComponent,
+    WidgetTotaleDecedutiComponent,
+    WidgetTotaleTerapiaIntensivaComponent,
+    WidgetTotaleTamponiComponent
   ],
   imports: [
     BrowserModule,
