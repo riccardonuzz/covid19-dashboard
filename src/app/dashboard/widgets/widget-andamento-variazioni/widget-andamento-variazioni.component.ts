@@ -18,7 +18,9 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
   static config: GridsterItem = {
     cols: 2,
     rows: 1,
-    y: 1,
+    minItemRows: 2,
+    minItemCols: 2,
+    y: 4,
     x: 0,
     type: 'WIDGET_ANDAMENTO_VARIAZIONI'
   };

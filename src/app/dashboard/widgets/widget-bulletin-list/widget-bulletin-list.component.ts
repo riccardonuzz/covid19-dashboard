@@ -16,9 +16,9 @@ export class WidgetBulletinListComponent implements OnInit {
     cols: 2,
     rows: 2,
     minItemCols: 2,
-    minItemRows: 1,
+    minItemRows: 2,
     y: 1,
-    x: 0,
+    x: 4,
     type: 'WIDGET_LISTA_BOLLETTINI'
   };
 

@@ -16,7 +16,7 @@ export class WidgetTotaleDecedutiComponent implements OnInit {
     maxItemCols: 1,
     minItemRows: 1,
     y: 0,
-    x: 0,
+    x: 3,
     resizeEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_DECEDUTI'

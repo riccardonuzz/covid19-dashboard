@@ -16,8 +16,10 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
   static config: GridsterItem = {
     cols: 2,
     rows: 2,
-    y: 0,
-    x: 2,
+    minItemRows: 1,
+    minItemCols: 2,
+    y: 1,
+    x: 0,
     type: 'WIDGET_ANDAMENTO_NAZIONALE'
   };
 

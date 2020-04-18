@@ -17,8 +17,10 @@ export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
   static config: GridsterItem = {
     cols: 4,
     rows: 2,
+    minItemCols: 2,
+    minItemRows: 2,
     y: 1,
-    x: 0,
+    x: 2,
     type: 'WIDGET_RIPARTIZIONE_CASI_TOTALI'
   };
 
