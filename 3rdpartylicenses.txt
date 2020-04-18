@@ -60,9 +60,6 @@ MIT
 @angular/platform-browser
 MIT
 
-@angular/router
-MIT
-
 @swimlane/ngx-charts
 MIT
 MIT License
