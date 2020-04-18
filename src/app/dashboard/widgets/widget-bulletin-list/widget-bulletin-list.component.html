@@ -1,0 +1,57 @@
+<app-card title="Ultimi bollettini">
+    <i title-icon class="lnr lnr-list"></i>
+    <div body>
+        <ul class="list-header">
+            <li>
+                <span title="Data">
+                    Data
+                </span>
+                <span title="Totale casi">
+                    Totale casi
+                </span>
+                <span title="Totale positivi">
+                    Totale positivi
+                </span>
+                <span title="Nuovi positivi">
+                    Nuovi positivi
+                </span>
+                <span title="Dimessi/guariti">
+                    Dimessi/guariti
+                </span>
+                <span title="In terapia intensiva">
+                    In terapia intensiva
+                </span>
+                <span title="Deceduti">
+                    Deceduti
+                </span>
+            </li>
+        </ul>
+        <div class="scrollable-container">
+            <ul>
+                <li *ngFor="let bulletin of bulletins">
+                    <span>
+                        {{bulletin.data | date: 'mediumDate'}}
+                    </span>
+                    <span>
+                        {{bulletin.totale_casi}}
+                    </span>
+                    <span>
+                        {{bulletin.totale_positivi}}
+                    </span>
+                    <span>
+                        {{bulletin.nuovi_positivi}}
+                    </span>
+                    <span>
+                        {{bulletin.dimessi_guariti}}
+                    </span>
+                    <span>
+                        {{bulletin.terapia_intensiva}}
+                    </span>
+                    <span>
+                        {{bulletin.deceduti}}
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</app-card>

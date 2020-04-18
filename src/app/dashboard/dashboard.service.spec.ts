@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 
 import { DashboardService } from './dashboard.service';
-import { WidgetStatisticheGeneraliComponent } from './widgets/widget-statistiche-generali/widget-statistiche-generali.component';
+import { WidgetTotaleCasiComponent } from './widgets/widget-totale-casi/widget-totale-casi.component';
 import { WidgetAndamentoNazionaleComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
 import { WidgetRegistry } from './widgets/models/widget-registry';
 import { GridsterItemComponent, GridsterItem } from 'angular-gridster2';
 
 describe('DashboardService', () => {
     const defaultWidgetsConfig = [
-        { ...WidgetStatisticheGeneraliComponent.config },
+        { ...WidgetTotaleCasiComponent.config },
         { ...WidgetAndamentoNazionaleComponent.config }
     ];
 
@@ -33,7 +33,7 @@ describe('DashboardService', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({});
         service = TestBed.inject(DashboardService);
-        WidgetStatisticheGeneraliComponent.config = defaultWidgetsConfig[0];
+        WidgetTotaleCasiComponent.config = defaultWidgetsConfig[0];
         WidgetAndamentoNazionaleComponent.config = defaultWidgetsConfig[1];
     });
 
@@ -50,11 +50,11 @@ describe('DashboardService', () => {
     });
 
     it('Should initialize dashboard configuration from localStorage', () => {
-        WidgetStatisticheGeneraliComponent.config.x = 2;
+        WidgetTotaleCasiComponent.config.x = 2;
         WidgetAndamentoNazionaleComponent.config.y = 0;
 
         const mockedDashboardConfig = [
-            WidgetStatisticheGeneraliComponent.config,
+            WidgetTotaleCasiComponent.config,
             WidgetAndamentoNazionaleComponent.config,
         ];
 
@@ -81,31 +81,45 @@ describe('DashboardService', () => {
     });
 
     it('Should change layout on itemResize()', () => {
-        WidgetStatisticheGeneraliComponent.config.x = 2;
-        WidgetStatisticheGeneraliComponent.config.y = 4;
+        WidgetTotaleCasiComponent.config.x = 2;
+        WidgetTotaleCasiComponent.config.y = 4;
 
         service['dashboard'] = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
 
         service['dashboardUpdate$'].subscribe((item: GridsterItem) => {
-            expect(item).toEqual(WidgetStatisticheGeneraliComponent.config);
-            expect(service.getDashboard()).toContain(WidgetStatisticheGeneraliComponent.config);
+            expect(item).toEqual(WidgetTotaleCasiComponent.config);
+            expect(service.getDashboard()).toContain(WidgetTotaleCasiComponent.config);
         });
 
-        service['itemResize'](WidgetStatisticheGeneraliComponent.config, {} as GridsterItemComponent);
+        service['itemResize'](WidgetTotaleCasiComponent.config, {} as GridsterItemComponent);
     });
 
 
-    it('Should change layout on itemResize()', () => {
-        WidgetStatisticheGeneraliComponent.config.x = 2;
-        WidgetStatisticheGeneraliComponent.config.y = 4;
+    it('Should change layout on itemChange()', () => {
+        WidgetTotaleCasiComponent.config.x = 2;
+        WidgetTotaleCasiComponent.config.y = 4;
 
         service['dashboard'] = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
 
         service['dashboardUpdate$'].subscribe((item: GridsterItem) => {
-            expect(item).toEqual(WidgetStatisticheGeneraliComponent.config);
-            expect(service.getDashboard()).toContain(WidgetStatisticheGeneraliComponent.config);
+            expect(item).toEqual(WidgetTotaleCasiComponent.config);
+            expect(service.getDashboard()).toContain(WidgetTotaleCasiComponent.config);
         });
 
-        service['itemChange'](WidgetStatisticheGeneraliComponent.config, {} as GridsterItemComponent);
+        service['itemChange'](WidgetTotaleCasiComponent.config, {} as GridsterItemComponent);
+    });
+
+    it('Should get dashboard layout update', () => {
+        WidgetTotaleCasiComponent.config.x = 2;
+        WidgetTotaleCasiComponent.config.y = 4;
+
+        service['dashboard'] = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
+
+        service.getDashboardUpdate().subscribe((item: GridsterItem) => {
+            expect(item).toEqual(WidgetTotaleCasiComponent.config);
+            expect(service.getDashboard()).toContain(WidgetTotaleCasiComponent.config);
+        });
+
+        service['itemChange'](WidgetTotaleCasiComponent.config, {} as GridsterItemComponent);
     });
 });

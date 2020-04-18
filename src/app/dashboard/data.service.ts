@@ -13,7 +13,7 @@ export class DataService {
   constructor(private httpClient: HttpClient) { }
 
   public getAndamentoNazionaleLatest(): Observable<AndamentoNazionale> {
-    return this.httpClient.get<AndamentoNazionale>('dpc-covid19-ita-andamento-nazionale-latest.json')
+    return this.httpClient.get<AndamentoNazionale>('/dpc-covid19-ita-andamento-nazionale-latest.json')
       .pipe(
         map(andamentoNazionale => andamentoNazionale[0])
       );
@@ -21,7 +21,7 @@ export class DataService {
 
   public getAndamentoNazionale(forceRefresh?: boolean): Observable<AndamentoNazionale[]> {
     if (!this.cachedAndamentoNazionale$.observers.length || forceRefresh) {
-      this.httpClient.get<AndamentoNazionale[]>('dpc-covid19-ita-andamento-nazionale.json').subscribe(
+      this.httpClient.get<AndamentoNazionale[]>('/dpc-covid19-ita-andamento-nazionale.json').subscribe(
         data => this.cachedAndamentoNazionale$.next(data),
         error => {
           this.cachedAndamentoNazionale$.error(error);

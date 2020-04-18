@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
 import { GridsterConfig, GridsterModule } from 'angular-gridster2';
-import { WidgetStatisticheGeneraliComponent } from './widgets/widget-statistiche-generali/widget-statistiche-generali.component';
 import { DashboardService } from './dashboard.service';
 import { GenericWidgetComponent } from './widgets/generic-widget/generic-widget.component';
 import { GenericWidgetDirective } from './widgets/generic-widget/generic-widget-directive/generic-widget.directive';
@@ -10,6 +9,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { of } from 'rxjs';
 import { CardComponent } from '@swimlane/ngx-charts';
 import { WidgetAndamentoNazionaleComponent } from './widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
+import { WidgetTotaleCasiComponent } from './widgets/widget-totale-casi/widget-totale-casi.component';
 
 class MockedDashboardService {
     getOptions() {
@@ -17,7 +17,7 @@ class MockedDashboardService {
     }
 
     getDashboard() {
-        return [WidgetStatisticheGeneraliComponent.config];
+        return [WidgetTotaleCasiComponent.config];
     }
 
     getDashboardUpdate() {
@@ -38,7 +38,7 @@ describe('DashboardComponent', () => {
                 CardComponent,
                 GenericWidgetComponent,
                 GenericWidgetDirective,
-                WidgetStatisticheGeneraliComponent,
+                WidgetTotaleCasiComponent,
                 WidgetAndamentoNazionaleComponent
             ],
             providers: [
@@ -58,7 +58,7 @@ describe('DashboardComponent', () => {
     });
 
     it('Should get dashboard correctly', () => {
-        expect(component.dashboard).toEqual([WidgetStatisticheGeneraliComponent.config]);
+        expect(component.dashboard).toEqual([WidgetTotaleCasiComponent.config]);
     });
 
     it('Should get options correctly', () => {

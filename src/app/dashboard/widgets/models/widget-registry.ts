@@ -1,6 +1,5 @@
-import { WidgetStatisticheGeneraliComponent } from '../widget-statistiche-generali/widget-statistiche-generali.component';
 import { WidgetAndamentoNazionaleComponent } from '../widget-andamento-nazionale/widget-andamento-nazionale.component';
-import { WidgetAndamentoVariazioni } from '../widget-andamento-variazioni/widget-andamento-variazioni.component';
+import { WidgetAndamentoVariazioniComponent } from '../widget-andamento-variazioni/widget-andamento-variazioni.component';
 import { Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GridsterItem } from 'angular-gridster2';
@@ -11,6 +10,7 @@ import { WidgetTotaleGuaritiComponent } from '../widget-totale-guariti/widget-to
 import { WidgetTotaleDecedutiComponent } from '../widget-totale-deceduti/widget-totale-deceduti.component';
 import { WidgetTotaleTerapiaIntensivaComponent } from '../widget-totale-terapia-intensiva/widget-totale-terapia-intensiva.component';
 import { WidgetTotaleTamponiComponent } from '../widget-totale-tamponi/widget-totale-tamponi.component';
+import { WidgetBulletinListComponent } from '../widget-bulletin-list/widget-bulletin-list.component';
 
 export class DynamicWidget {
     name: string;
@@ -26,7 +26,6 @@ export class DynamicWidget {
 
 export class WidgetRegistry {
     private static widgetList: DynamicWidget[] = [
-        // new DynamicWidget(WidgetStatisticheGeneraliComponent.config.type, WidgetStatisticheGeneraliComponent),
         new DynamicWidget(WidgetTotaleCasiComponent.config.type, WidgetTotaleCasiComponent),
         new DynamicWidget(WidgetTotalePositiviComponent.config.type, WidgetTotalePositiviComponent),
         new DynamicWidget(WidgetTotaleGuaritiComponent.config.type, WidgetTotaleGuaritiComponent),
@@ -34,8 +33,9 @@ export class WidgetRegistry {
         new DynamicWidget(WidgetTotaleTerapiaIntensivaComponent.config.type, WidgetTotaleTerapiaIntensivaComponent),
         new DynamicWidget(WidgetTotaleTamponiComponent.config.type, WidgetTotaleTamponiComponent),
         new DynamicWidget(WidgetAndamentoNazionaleComponent.config.type, WidgetAndamentoNazionaleComponent),
-        new DynamicWidget(WidgetAndamentoVariazioni.config.type, WidgetAndamentoVariazioni),
-        new DynamicWidget(WidgetRipartizioneCasiTotaliComponent.config.type, WidgetRipartizioneCasiTotaliComponent)
+        new DynamicWidget(WidgetAndamentoVariazioniComponent.config.type, WidgetAndamentoVariazioniComponent),
+        new DynamicWidget(WidgetRipartizioneCasiTotaliComponent.config.type, WidgetRipartizioneCasiTotaliComponent),
+        new DynamicWidget(WidgetBulletinListComponent.config.type, WidgetBulletinListComponent),
     ];
 
     static getWidgetList() {

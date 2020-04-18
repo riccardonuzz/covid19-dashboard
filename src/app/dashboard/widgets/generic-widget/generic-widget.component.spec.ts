@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';import { 
 import { DashboardService } from '../../dashboard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
-import { WidgetStatisticheGeneraliComponent } from '../widget-statistiche-generali/widget-statistiche-generali.component';
+import { WidgetTotaleCasiComponent } from '../widget-totale-casi/widget-totale-casi.component';
 
 class MockedDashboardService {
     public getDashboardUpdate() {
@@ -25,7 +25,7 @@ describe('GenericWidgetComponent', () => {
             declarations: [
                 GenericWidgetComponent,
                 GenericWidgetDirective,
-                WidgetStatisticheGeneraliComponent
+                WidgetTotaleCasiComponent
             ],
             providers: [
                 { provide: DashboardService, useClass: MockedDashboardService }
@@ -50,7 +50,7 @@ describe('GenericWidgetComponent', () => {
         component.loadComponent();
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('app-widget-statistiche-generali')).toBeTruthy();
+        expect(compiled.querySelector('app-widget-totale-casi')).toBeTruthy();
     });
 
     it('Should load a widget correctly onInit', () => {
@@ -59,6 +59,6 @@ describe('GenericWidgetComponent', () => {
         component.ngOnInit();
         fixture.detectChanges();
         const compiled = fixture.debugElement.nativeElement;
-        expect(compiled.querySelector('app-widget-statistiche-generali')).toBeTruthy();
+        expect(compiled.querySelector('app-widget-totale-casi')).toBeTruthy();
     });
 });

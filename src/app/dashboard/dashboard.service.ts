@@ -24,7 +24,7 @@ export class DashboardService {
       outerMarginBottom: null,
       outerMarginLeft: null,
       useTransformPositioning: true,
-      mobileBreakpoint: 640,
+      mobileBreakpoint: 900,
       minCols: 6,
       maxCols: 6,
       minRows: 9,

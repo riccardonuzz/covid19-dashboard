@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/'
+  baseUrl: 'https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json'
 };
 
 /*

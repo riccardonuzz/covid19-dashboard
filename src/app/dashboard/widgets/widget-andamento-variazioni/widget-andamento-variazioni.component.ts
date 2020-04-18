@@ -14,7 +14,7 @@ import { ThemeService } from 'src/app/theme/theme.service';
   templateUrl: './widget-andamento-variazioni.component.html',
   styleUrls: ['./widget-andamento-variazioni.component.scss']
 })
-export class WidgetAndamentoVariazioni implements OnInit {
+export class WidgetAndamentoVariazioniComponent implements OnInit {
   static config: GridsterItem = {
     cols: 2,
     rows: 1,

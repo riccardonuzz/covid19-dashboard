@@ -13,9 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from './header/header.component';
 import { ToggleButtonComponent } from './header/toggle-button/toggle-button.component';
 import { CardComponent } from './dashboard/widgets/card/card.component';
-import { WidgetStatisticheGeneraliComponent } from './dashboard/widgets/widget-statistiche-generali/widget-statistiche-generali.component';
 import { WidgetAndamentoNazionaleComponent } from './dashboard/widgets/widget-andamento-nazionale/widget-andamento-nazionale.component';
-import { WidgetAndamentoVariazioni } from './dashboard/widgets/widget-andamento-variazioni/widget-andamento-variazioni.component';
+import { WidgetAndamentoVariazioniComponent } from './dashboard/widgets/widget-andamento-variazioni/widget-andamento-variazioni.component';
 import { GenericWidgetComponent } from './dashboard/widgets/generic-widget/generic-widget.component';
 import { GenericWidgetDirective } from './dashboard/widgets/generic-widget/generic-widget-directive/generic-widget.directive';
 import { HttpInterceptorService } from './http-interceptor.service';
@@ -31,6 +30,8 @@ import { WidgetTotaleGuaritiComponent } from './dashboard/widgets/widget-totale-
 import { WidgetTotaleDecedutiComponent } from './dashboard/widgets/widget-totale-deceduti/widget-totale-deceduti.component';
 import { WidgetTotaleTerapiaIntensivaComponent } from './dashboard/widgets/widget-totale-terapia-intensiva/widget-totale-terapia-intensiva.component';
 import { WidgetTotaleTamponiComponent } from './dashboard/widgets/widget-totale-tamponi/widget-totale-tamponi.component';
+import { WidgetBulletinListComponent } from './dashboard/widgets/widget-bulletin-list/widget-bulletin-list.component';
+
 registerLocaleData(localeIt, 'it-IT', localeItExtra);
 
 @NgModule({
@@ -40,9 +41,8 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     HeaderComponent,
     ToggleButtonComponent,
     CardComponent,
-    WidgetStatisticheGeneraliComponent,
     WidgetAndamentoNazionaleComponent,
-    WidgetAndamentoVariazioni,
+    WidgetAndamentoVariazioniComponent,
     GenericWidgetComponent,
     GenericWidgetDirective,
     TabComponent,
@@ -52,7 +52,8 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     WidgetTotaleGuaritiComponent,
     WidgetTotaleDecedutiComponent,
     WidgetTotaleTerapiaIntensivaComponent,
-    WidgetTotaleTamponiComponent
+    WidgetTotaleTamponiComponent,
+    WidgetBulletinListComponent
   ],
   imports: [
     BrowserModule,
@@ -68,11 +69,6 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     useClass: HttpInterceptorService,
     multi: true,
   }],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    WidgetStatisticheGeneraliComponent,
-    WidgetAndamentoNazionaleComponent,
-    WidgetAndamentoVariazioni
-  ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

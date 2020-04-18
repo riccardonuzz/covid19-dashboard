@@ -35,25 +35,6 @@ export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
   legendTitle: string = 'Legenda';
   animations: boolean = false;
 
-  single = [
-    {
-      "name": "Germany",
-      "value": 8940000
-    },
-    {
-      "name": "USA",
-      "value": 5000000
-    },
-    {
-      "name": "France",
-      "value": 7200000
-    },
-    {
-      "name": "UK",
-      "value": 6200000
-    }
-  ];
-
   colorScheme = {
     domain: []
   };
@@ -80,28 +61,24 @@ export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
 
     this.dataService.getAndamentoNazionale()
       .subscribe((andamentoNazionale: AndamentoNazionale[]) => {
-        this.mapVariazionePositiviToChart(andamentoNazionale);
+        this.mapCasiTotaliToChart(andamentoNazionale);
       });
   }
 
-  mapVariazionePositiviToChart(andamentoNazionale: AndamentoNazionale[]) {
+  mapCasiTotaliToChart(andamentoNazionale: AndamentoNazionale[]) {
     const latestAndamentoNazionale = andamentoNazionale[andamentoNazionale.length - 1];
     this.chartData.push({
-      name: 'Deceduti',
+      name: 'Totale deceduti',
       value: latestAndamentoNazionale.deceduti
     });
     this.chartData.push({
-      name: 'Guariti/Dimessi',
+      name: 'Totale dimessi/guariti',
       value: latestAndamentoNazionale.dimessi_guariti
     });
     this.chartData.push({
-      name: 'Positivi',
+      name: 'Totale positivi',
       value: latestAndamentoNazionale.totale_positivi
     });
-    // this.chartData.push({
-    //   name: 'Positivi',
-    //   value: latestAndamentoNazionale.
-    // });
     this.chartData = [...this.chartData];
   }
 
