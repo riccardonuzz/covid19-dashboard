@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "deploy": "ng deploy --repo=https://github.com/riccardonuzz/covid19-dashboard.git --base-href=https://riccardonuzz.github.io/covid19-dashboard/"
   },
   "private": true,
   "dependencies": {
