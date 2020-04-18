@@ -95,7 +95,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "codeCoverage": true 
+            "codeCoverage": true
           }
         },
         "lint": {
@@ -122,8 +122,13 @@
               "devServerTarget": "covid-dashboard:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "covid-dashboard"
 }
