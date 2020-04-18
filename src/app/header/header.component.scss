@@ -3,4 +3,20 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 60px;
+
+    .logo-container {
+        display: flex;
+        align-items: center;
+        
+        img {
+            height: 110px;
+            width: auto;
+            padding-top: 13px;
+            float: left;
+        }
+
+        h1 {
+            padding-top: 2px
+        }
+    }
 }
