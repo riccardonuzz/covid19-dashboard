@@ -32,7 +32,7 @@ export class TabComponent implements OnInit {
   }
 
   onTabChange(tabId: number) {
-    this.selected = tabId;
-    this.tabChange.emit(tabId);
+    this.selected = +tabId;
+    this.tabChange.emit(+tabId);
   }
 }

@@ -14,7 +14,7 @@
 </div>
 
 <ng-template #selectMode>
-    <select>
-        <option *ngFor="let tab of tabs; let i = index">{{tab.name}}</option>
+    <select (change)="onTabChange($event.target.value)">
+        <option *ngFor="let tab of tabs" [value]="tab.id">{{tab.name}}</option>
     </select>
 </ng-template>
