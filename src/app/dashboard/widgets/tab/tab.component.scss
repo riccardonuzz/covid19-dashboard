@@ -12,10 +12,6 @@
     }
 }
 
-// .tab:nth-child(even) {
-//     border-left: 0px;
-//     border-right: 0px;
-// }
 
 .active {
     background-color: var(--theme-chart-palette-1);
@@ -29,4 +25,8 @@
 .rounded-right {
     border-top-right-radius: 7px;
     border-bottom-right-radius: 7px;
+}
+
+select {
+    margin-top: -5px;
 }

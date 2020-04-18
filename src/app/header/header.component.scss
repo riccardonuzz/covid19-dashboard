@@ -2,7 +2,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 65px;
+    padding-right: 10px;
 
     .logo-container {
         display: flex;
@@ -17,6 +18,12 @@ header {
 
         h1 {
             padding-top: 2px
+        }
+
+        @media screen and (max-width: 640px) {
+            h1 {
+                display: none;
+            }
         }
     }
 }

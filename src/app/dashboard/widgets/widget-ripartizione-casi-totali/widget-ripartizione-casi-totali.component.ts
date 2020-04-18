@@ -15,12 +15,12 @@ import { SupportedThemes, themes } from 'src/app/theme/themes';
 })
 export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
   static config: GridsterItem = {
-    cols: 4,
-    rows: 2,
+    cols: 2,
+    rows: 3,
     minItemCols: 2,
     minItemRows: 2,
     y: 1,
-    x: 2,
+    x: 4,
     type: 'WIDGET_RIPARTIZIONE_CASI_TOTALI'
   };
 

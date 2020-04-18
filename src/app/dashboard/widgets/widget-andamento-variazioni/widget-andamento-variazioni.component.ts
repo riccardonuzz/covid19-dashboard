@@ -16,11 +16,11 @@ import { ThemeService } from 'src/app/theme/theme.service';
 })
 export class WidgetAndamentoVariazioniComponent implements OnInit {
   static config: GridsterItem = {
-    cols: 2,
-    rows: 1,
-    minItemRows: 2,
+    cols: 3,
+    rows: 3,
     minItemCols: 2,
-    y: 4,
+    minItemRows: 1,
+    y: 3,
     x: 0,
     type: 'WIDGET_ANDAMENTO_VARIAZIONI'
   };
