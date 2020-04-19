@@ -84,12 +84,14 @@ export class DashboardService {
   public initializeDashboard() {
     const dashboardLayout = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY)) as GridsterItem[];
     const widgetListSize = WidgetRegistry.getWidgetList().length;
-    if (widgetListSize !== dashboardLayout.length) {
-      localStorage.removeItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY);
-      this.loadDefaultDashboardConfiguration();
-      this.dashboardUpdate$.next();
-    } else if (dashboardLayout && dashboardLayout.length > 0) {
-      this.dashboard = dashboardLayout;
+    if (dashboardLayout) {
+      if (widgetListSize !== dashboardLayout.length) {
+        localStorage.removeItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY);
+        this.loadDefaultDashboardConfiguration();
+        this.dashboardUpdate$.next();
+      } else if (dashboardLayout && dashboardLayout.length > 0) {
+        this.dashboard = dashboardLayout;
+      }
     } else {
       this.loadDefaultDashboardConfiguration();
     }
