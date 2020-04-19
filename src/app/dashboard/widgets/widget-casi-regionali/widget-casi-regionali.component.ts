@@ -19,9 +19,9 @@ import { take } from 'rxjs/operators';
 export class WidgetCasiRegionaliComponent implements OnInit {
   static config: GridsterItem = {
     cols: 2,
-    rows: 2,
+    rows: 3,
     minItemCols: 2,
-    minItemRows: 2,
+    minItemRows: 3,
     y: 1,
     x: 2,
     type: 'WIDGET_CASI_REGIONALI'
