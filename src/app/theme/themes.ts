@@ -15,10 +15,11 @@ export const themes: ThemesCollection = {
     lightTheme: {
         '--theme-background': '#cce7e8',
         '--theme-primary-color': 'white',
-        '--theme-primary-text-color': 'black',
         '--theme-secondary-color': '#3a9bcf',
 
+        '--theme-primary-text-color': 'black',
         '--theme-primary-text-color-contrast': 'white',
+
         '--theme-widget-border': '#cecece',
         '--theme-highlight-color': '#3a9bcf',
 
@@ -30,9 +31,10 @@ export const themes: ThemesCollection = {
         '--theme-background': '#202124',
         '--theme-primary-color': '#323639',
         '--theme-secondary-color': '#5AA454',
+
         '--theme-primary-text-color': 'white',
-        
         '--theme-primary-text-color-contrast': 'white',
+        
         '--theme-widget-border': 'transparent',
         '--theme-highlight-color': 'yellow',
 

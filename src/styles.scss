@@ -4,12 +4,12 @@
 @font-face {
   font-family: "OpenSans-Light";
   src: url("assets/fonts/OpenSans-Light.ttf");
-  }
+}
 
 body {
   margin: 0 100px;
   background-color: var(--theme-background);
-  font-family: 'OpenSans-Light';
+  font-family: "OpenSans-Light";
 }
 
 /* On screens that are 992px or less, set the background color to blue */
@@ -19,3 +19,16 @@ body {
   }
 }
 
+.my-label {
+  background-color: var(--theme-secondary-color) !important;
+  color: var(--theme-primary-text-color-contrast) !important;
+  border: none !important;
+}
+
+.leaflet-tooltip-left::before {
+  border-left-color: var(--theme-secondary-color) !important;
+}
+
+.leaflet-tooltip-right::before {
+  border-right-color: var(--theme-secondary-color) !important;
+}

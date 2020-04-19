@@ -30,6 +30,7 @@ import { WidgetTotaleDecedutiComponent } from './dashboard/widgets/widget-totale
 import { WidgetTotaleTerapiaIntensivaComponent } from './dashboard/widgets/widget-totale-terapia-intensiva/widget-totale-terapia-intensiva.component';
 import { WidgetTotaleTamponiComponent } from './dashboard/widgets/widget-totale-tamponi/widget-totale-tamponi.component';
 import { WidgetBulletinListComponent } from './dashboard/widgets/widget-bulletin-list/widget-bulletin-list.component';
+import { WidgetCasiRegionaliComponent } from './dashboard/widgets/widget-casi-regionali/widget-casi-regionali.component';
 
 registerLocaleData(localeIt, 'it-IT', localeItExtra);
 
@@ -52,7 +53,8 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     WidgetTotaleDecedutiComponent,
     WidgetTotaleTerapiaIntensivaComponent,
     WidgetTotaleTamponiComponent,
-    WidgetBulletinListComponent
+    WidgetBulletinListComponent,
+    WidgetCasiRegionaliComponent
   ],
   imports: [
     BrowserModule,

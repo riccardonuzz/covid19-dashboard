@@ -27,8 +27,8 @@ export class DashboardService {
       mobileBreakpoint: 900,
       minCols: 6,
       maxCols: 6,
-      minRows: 9,
-      maxRows: 9,
+      minRows: 12,
+      maxRows: 12,
       maxItemCols: 100,
       minItemCols: 1,
       maxItemRows: 100,
@@ -100,12 +100,12 @@ export class DashboardService {
   public getDashboardUpdate() {
     return this.dashboardUpdate$.asObservable();
   }
-  
+
   private loadDefaultDashboardConfiguration() {
     this.dashboard = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
   }
 
-  private itemChange(item: GridsterItem, itemComponent: GridsterItemComponent) {
+  public itemChange(item: GridsterItem, itemComponent: GridsterItemComponent) {
     this.dashboardUpdate$.next(item);
   }
 
@@ -117,4 +117,13 @@ export class DashboardService {
     this.options.api.optionsChanged();
   }
 
+  public enableWidgetEditing(enabled: boolean) {
+    this.dashboard = [
+      ...this.dashboard.map((item: GridsterItem) => ({
+        ...item,
+        dragEnabled: enabled,
+        resizeEnabled: enabled
+      }))
+    ];
+  }
 }

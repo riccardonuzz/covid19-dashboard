@@ -3,6 +3,7 @@ import { ThemeService } from '../theme/theme.service';
 import { SupportedThemes } from '../theme/themes';
 import { take } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +12,10 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   enabled: boolean;
+  locked: boolean;
   themeSubscription: Subscription;
 
-  constructor(private themeService: ThemeService) { }
+  constructor(private themeService: ThemeService, private dashboardService: DashboardService) { }
 
   ngOnInit() {
     this.themeSubscription = this.themeService.getActiveTheme()
@@ -33,6 +35,11 @@ export class HeaderComponent implements OnInit {
     } else {
       this.themeService.setActiveTheme(SupportedThemes.LIGHT_THEME);
     }
+  }
+
+  onLockToggle(enabled: boolean) {
+    this.locked = enabled;
+    this.dashboardService.enableWidgetEditing(enabled);
   }
 
   ngOnDestroy() {

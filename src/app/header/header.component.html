@@ -3,8 +3,14 @@
         <img src="assets/images/covid.png">
         <h1>COVID-19 Stats</h1>
     </div>
-    <app-toggle-button (onToggle)="onToggle($event)" [enabled]="enabled">
-        <i *ngIf="!enabled" class="lnr lnr-sun"></i>
-        <i *ngIf="enabled" class="lnr lnr-moon"></i>
-    </app-toggle-button>
+    <div class="actions">
+        <app-toggle-button (onToggle)="onLockToggle($event)" [(enabled)]="locked">
+            <i *ngIf="!locked" class="lnr lnr-lock"></i>
+            <i *ngIf="locked" class="lnr lnr-move"></i>
+        </app-toggle-button>
+        <app-toggle-button (onToggle)="onToggle($event)" [(enabled)]="enabled">
+            <i *ngIf="!enabled" class="lnr lnr-sun"></i>
+            <i *ngIf="enabled" class="lnr lnr-moon"></i>
+        </app-toggle-button>
+    </div>
 </header>

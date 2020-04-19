@@ -11,6 +11,7 @@ import { WidgetTotaleDecedutiComponent } from '../widget-totale-deceduti/widget-
 import { WidgetTotaleTerapiaIntensivaComponent } from '../widget-totale-terapia-intensiva/widget-totale-terapia-intensiva.component';
 import { WidgetTotaleTamponiComponent } from '../widget-totale-tamponi/widget-totale-tamponi.component';
 import { WidgetBulletinListComponent } from '../widget-bulletin-list/widget-bulletin-list.component';
+import { WidgetCasiRegionaliComponent } from '../widget-casi-regionali/widget-casi-regionali.component';
 
 export class DynamicWidget {
     name: string;
@@ -36,6 +37,7 @@ export class WidgetRegistry {
         new DynamicWidget(WidgetAndamentoVariazioniComponent.config.type, WidgetAndamentoVariazioniComponent),
         new DynamicWidget(WidgetRipartizioneCasiTotaliComponent.config.type, WidgetRipartizioneCasiTotaliComponent),
         new DynamicWidget(WidgetBulletinListComponent.config.type, WidgetBulletinListComponent),
+        new DynamicWidget(WidgetCasiRegionaliComponent.config.type, WidgetCasiRegionaliComponent),
     ];
 
     static getWidgetList() {

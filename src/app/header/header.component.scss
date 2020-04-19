@@ -26,4 +26,13 @@ header {
             }
         }
     }
+
+    .actions {
+        display: flex;
+        justify-content: space-between;
+
+        app-toggle-button {
+            margin-left: 10px;
+        }
+    }
 }

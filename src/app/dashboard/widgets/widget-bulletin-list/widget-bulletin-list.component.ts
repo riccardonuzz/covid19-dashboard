@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Subscription, Observable } from 'rxjs';
 import { GridsterItem } from 'angular-gridster2';
 import { DataService } from '../../data.service';
-import { ThemeService } from 'src/app/theme/theme.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { map } from 'rxjs/operators';
 

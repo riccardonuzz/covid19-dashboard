@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, ReplaySubject } from 'rxjs';
 import { AndamentoNazionale } from './widgets/models/andamento-nazionale';
+import { DatiRegione } from './widgets/models/dati-regione';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class DataService {
       );
     }
     return this.cachedAndamentoNazionale$;
+  }
+
+  public getDatiRegioniLatest() {
+    return this.httpClient.get<DatiRegione[]>('/dpc-covid19-ita-regioni-latest.json');
   }
 }
