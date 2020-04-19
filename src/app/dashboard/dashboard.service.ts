@@ -12,6 +12,7 @@ export class DashboardService {
   private options: GridsterConfig;
   private dashboard: GridsterItem[];
   private dashboardUpdate$: Subject<GridsterItem> = new Subject();
+  private LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY = 'dashboardLayout';
 
   constructor() {
     this.options = {
@@ -76,13 +77,18 @@ export class DashboardService {
         debounceTime(1000)
       )
       .subscribe((item: GridsterItem) => {
-        localStorage.setItem('dashboardLayout', JSON.stringify(this.dashboard));
+        localStorage.setItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY, JSON.stringify(this.dashboard));
       });
   }
 
   public initializeDashboard() {
-    const dashboardLayout = JSON.parse(localStorage.getItem('dashboardLayout')) as GridsterItem[];
-    if (dashboardLayout && dashboardLayout.length > 0) {
+    const dashboardLayout = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY)) as GridsterItem[];
+    const widgetListSize = WidgetRegistry.getWidgetList().length;
+    if (widgetListSize !== dashboardLayout.length) {
+      localStorage.removeItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY);
+      this.loadDefaultDashboardConfiguration();
+      this.dashboardUpdate$.next();
+    } else if (dashboardLayout && dashboardLayout.length > 0) {
       this.dashboard = dashboardLayout;
     } else {
       this.loadDefaultDashboardConfiguration();
@@ -104,6 +110,8 @@ export class DashboardService {
   private loadDefaultDashboardConfiguration() {
     this.dashboard = WidgetRegistry.getWidgetList().map(widget => (<any>widget.component).config);
   }
+
+
 
   public itemChange(item: GridsterItem, itemComponent: GridsterItemComponent) {
     this.dashboardUpdate$.next(item);
