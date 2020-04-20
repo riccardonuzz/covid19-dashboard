@@ -12,7 +12,7 @@ import { DashboardService } from '../dashboard/dashboard.service';
 })
 export class HeaderComponent implements OnInit {
   enabled: boolean;
-  locked: boolean = false;
+  locked: boolean = true;
   themeSubscription: Subscription;
 
   constructor(private themeService: ThemeService, private dashboardService: DashboardService) { }
