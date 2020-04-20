@@ -8,7 +8,7 @@ header {
     .logo-container {
         display: flex;
         align-items: center;
-        
+
         img {
             height: 110px;
             width: auto;
@@ -17,13 +17,17 @@ header {
         }
 
         h1 {
-            padding-top: 2px
+            padding-top: 2px;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        h1 {
+            display: none;
         }
 
-        @media screen and (max-width: 640px) {
-            h1 {
-                display: none;
-            }
+        .actions > app-toggle-button:first-child {
+            display: none !important;
         }
     }
 

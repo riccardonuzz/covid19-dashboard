@@ -4,11 +4,12 @@ import { DataService } from '../../data.service';
 import * as Leaflet from 'leaflet';
 import { DatiRegione } from '../models/dati-regione';
 import { ThemeService } from 'src/app/theme/theme.service';
-import { SupportedThemes } from 'src/app/theme/themes';
+import { SupportedThemes, themes } from 'src/app/theme/themes';
 import { SelectedData } from '../models/SelectedData';
 import { Tab } from '../tab/tab';
 import { combineLatest } from 'rxjs';
 import { take } from 'rxjs/operators';
+import italyGeoJson from './../../../../assets/italy.json';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class WidgetCasiRegionaliComponent implements OnInit {
   private map: Leaflet.Map;
   private tilesLayer: Leaflet.TileLayer;
   private markers: Leaflet.Marker[];
+  private geoJson: any;
 
   private markerValueKey = 'totale_positivi';
 
@@ -57,13 +59,15 @@ export class WidgetCasiRegionaliComponent implements OnInit {
       .subscribe(([datiRegione, activeTheme]) => {
         this.datiRegione = datiRegione;
         this.initMap();
+        this.setGeoJson(activeTheme);
         this.replaceTilesLayer(activeTheme);
         this.setMarkers();
       });
 
-      this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
-        this.replaceTilesLayer(activeTheme);
-      });
+    this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
+      this.replaceTilesLayer(activeTheme);
+      this.setGeoJson(activeTheme);
+    });
   }
 
 
@@ -73,11 +77,30 @@ export class WidgetCasiRegionaliComponent implements OnInit {
       zoom: 5.5
     });
 
-    this.tilesLayer = Leaflet.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+    this.tilesLayer = Leaflet.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19
     });
 
     this.tilesLayer.addTo(this.map);
+  }
+
+  private setGeoJson(activeTheme: SupportedThemes) {
+    const polystyle = (feature) => {
+      return {
+        fillColor: 'transparent',
+        weight: 2,
+        opacity: 1,
+        color: themes[activeTheme]['--theme-secondary-color'],
+        fillOpacity: 0.7
+      };
+    };
+
+    if (this.map) {
+      if (this.geoJson)
+        this.map.removeLayer(this.geoJson);
+      this.geoJson = Leaflet.geoJSON(italyGeoJson as any, { style: polystyle });
+      this.geoJson.addTo(this.map);
+    }
   }
 
   private replaceTilesLayer(activeTheme: SupportedThemes) {
@@ -88,7 +111,7 @@ export class WidgetCasiRegionaliComponent implements OnInit {
           maxZoom: 19
         });
       } else {
-        this.tilesLayer = Leaflet.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
+        this.tilesLayer = Leaflet.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
           maxZoom: 19
         });
       }
