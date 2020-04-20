@@ -55,12 +55,15 @@
 .icon-container-off {
   position: absolute;
   z-index: 1;
-  margin: 4px 5px;
+  top: 6px;
+  left: 6px;
 }
 
 .icon-container-on {
   position: absolute;
   z-index: 1;
-  margin: 4px 29px;
+  top: 6px;
+  left: 31px;
+  // margin: 4px 29px;
   color: var(--theme-primary-text-color);
 }
