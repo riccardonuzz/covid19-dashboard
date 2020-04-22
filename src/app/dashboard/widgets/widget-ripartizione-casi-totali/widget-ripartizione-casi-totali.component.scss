@@ -22,6 +22,12 @@
                 }
             }
 
-        }   
+        }
+
+        @media screen and (max-width: 640px) {
+            .chart-legend {
+                display: none!important;
+            }
+        }
     }
 }

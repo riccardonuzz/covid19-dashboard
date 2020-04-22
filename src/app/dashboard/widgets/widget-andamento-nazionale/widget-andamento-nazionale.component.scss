@@ -4,9 +4,8 @@
     margin: 10px;
     .line-chart {
         fill: var(--theme-primary-text-color);
-
     }
-    
+
     .line-chart {
         .legend-label {
             color: var(--theme-primary-text-color) !important;
@@ -20,10 +19,12 @@
                     color: var(--theme-highlight-color) !important;
                 }
             }
+        }
 
-        }   
+        @media screen and (max-width: 640px) {
+            .chart-legend {
+                display: none!important;
+            }
+        }
     }
-
-
 }
-

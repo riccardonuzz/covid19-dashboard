@@ -1,6 +1,7 @@
 gridster {
+    margin-top: 5px;
     background: transparent;
-    height: 85vh;
+    height: calc(100vh - 75px);
 }
 
 gridster.scrollVertical::-webkit-scrollbar-track {
