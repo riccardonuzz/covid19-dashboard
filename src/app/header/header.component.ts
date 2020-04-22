@@ -25,7 +25,9 @@ export class HeaderComponent implements OnInit {
           this.enabled = false;
         else
           this.enabled = true;
-      })
+      });
+
+      this.checkLockedEnabled();
   }
 
   onToggle(enabled: boolean) {
@@ -40,6 +42,11 @@ export class HeaderComponent implements OnInit {
   onLockToggle(enabled: boolean) {
     this.locked = enabled;
     this.dashboardService.enableWidgetEditing(enabled);
+  }
+
+  checkLockedEnabled() {
+    const dashboard = this.dashboardService.getDashboard();
+    this.locked = dashboard[0].resizeEnabled;
   }
 
   ngOnDestroy() {
