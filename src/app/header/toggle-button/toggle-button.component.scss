@@ -34,6 +34,7 @@
 .toggle-btn.toggle-btn-on {
   background: #86d993;
   border: 1px solid #86d993;
+  
 }
 
 .toggle-btn.toggle-btn-on:active {
@@ -66,4 +67,27 @@
   left: 31px;
   // margin: 4px 29px;
   color: var(--theme-primary-text-color);
+}
+
+
+@media only screen 
+    and (device-width: 375px) 
+    and (device-height: 812px) 
+    and (-webkit-device-pixel-ratio: 3) {
+      .icon-container-off {
+        position: absolute;
+        z-index: 1;
+        top: 4.5px;
+        left: 4px;
+      }
+      
+      .icon-container-on {
+        position: absolute;
+        z-index: 1;
+        top: 3px;
+        left: 26px;
+        // margin: 4px 29px;
+        color: var(--theme-primary-text-color);
+      }
+      
 }
