@@ -5,6 +5,7 @@ import { DataService } from '../../data.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { ThemeService } from 'src/app/theme/theme.service';
 import { SupportedThemes, themes } from 'src/app/theme/themes';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-widget-andamento-nazionale',
@@ -45,7 +46,7 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
     domain: []
   };
 
-  constructor(private dataService: DataService, private themeService: ThemeService) { }
+  constructor(private dataService: DataService, private themeService: ThemeService, private datePipe: DatePipe) { }
 
   ngOnInit() {
     this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
@@ -84,15 +85,15 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
 
     andamentoNazionale.forEach((andamentoNazionale: AndamentoNazionale) => {
       andamentoTotalePositivi.series.push({
-        name: andamentoNazionale.data,
+        name: this.datePipe.transform(andamentoNazionale.data),
         value: andamentoNazionale.totale_positivi
       });
       andamentoDeceduti.series.push({
-        name: andamentoNazionale.data,
+        name: this.datePipe.transform(andamentoNazionale.data),
         value: andamentoNazionale.deceduti
       });
       andamentoDimessiGuariti.series.push({
-        name: andamentoNazionale.data,
+        name: this.datePipe.transform(andamentoNazionale.data),
         value: andamentoNazionale.dimessi_guariti
       });
     });

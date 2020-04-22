@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ThemeModule } from './theme/theme.module';
 import { GridsterModule } from 'angular-gridster2';
@@ -18,7 +18,7 @@ import { GenericWidgetComponent } from './dashboard/widgets/generic-widget/gener
 import { GenericWidgetDirective } from './dashboard/widgets/generic-widget/generic-widget-directive/generic-widget.directive';
 import { HttpInterceptorService } from './http-interceptor.service';
 
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, DatePipe } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import localeItExtra from '@angular/common/locales/extra/it';
 import { TabComponent } from './dashboard/widgets/tab/tab.component';
@@ -64,11 +64,14 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
     NgxChartsModule,
     BrowserAnimationsModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: HttpInterceptorService,
-    multi: true,
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true,
+    },
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

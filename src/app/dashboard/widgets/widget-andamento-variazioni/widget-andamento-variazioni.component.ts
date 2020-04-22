@@ -8,6 +8,7 @@ import { SelectedData } from '../models/SelectedData';
 import { ChartData } from '../models/chart';
 import { SupportedThemes, themes } from 'src/app/theme/themes';
 import { ThemeService } from 'src/app/theme/theme.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-widget-andamento-variazioni',
@@ -61,7 +62,11 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
     name: "Deceduti"
   }];
 
-  constructor(private dataService: DataService, private themeService: ThemeService) { }
+  constructor(
+    private dataService: DataService,
+    private themeService: ThemeService,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit() {
     this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
@@ -84,7 +89,7 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
 
   mapVariazionePositiviToChart(andamentoNazionale: AndamentoNazionale[]) {
     this.variazionePositivi = andamentoNazionale.map((singleAndamentoNazionale: AndamentoNazionale) => ({
-      name: singleAndamentoNazionale.data.toString(),
+      name: this.datePipe.transform(singleAndamentoNazionale.data),
       value: singleAndamentoNazionale.nuovi_positivi
     }));
     this.chartData = this.variazionePositivi;
