@@ -1,4 +1,25 @@
 .app-wrapper {
   color: var(--theme-primary-text-color);
   height: 100%;
+
+  footer {
+    display: table;
+    padding: 10px;
+
+    img {
+      height: 40px;
+      width: auto;
+    }
+
+    span {
+      display: table-cell;
+      vertical-align: middle;
+      padding-left: 10px;
+
+      a {
+        color: var(--theme-secondary-color);
+        text-decoration: none;
+      }
+    }
+  }
 }
