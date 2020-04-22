@@ -1,27 +1,20 @@
-# CovidDashboard
+# Covid-19 Dashboard
+Link: [riccardonuzz.github.io/covid19-dashboard](riccardonuzz.github.io/covid19-dashboard)
+<img src="https://riccardonuzz.github.io/covid19-dashboard/assets/images/covid.png" width="200">
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.4.
+### Features
+- Dark mode;
+- Draggable and resizable widgets;
+- Fully responsive;
+- 85% test coverage;
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Run it on your machine
+`$ npm install`
 
-## Code scaffolding
+`$ npm run start`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Running tests: `$ npm run test`
+<br>
+<br>
+Thanks to [https://github.com/pcm-dpc/COVID-19](https://github.com/pcm-dpc/COVID-19) for daily provided data.
