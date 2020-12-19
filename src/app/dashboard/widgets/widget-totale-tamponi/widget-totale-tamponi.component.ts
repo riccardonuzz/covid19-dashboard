@@ -18,6 +18,7 @@ export class WidgetTotaleTamponiComponent implements OnInit {
     y: 0,
     x: 5,
     resizeEnabled: false,
+    dragEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_TAMPONI'
   };

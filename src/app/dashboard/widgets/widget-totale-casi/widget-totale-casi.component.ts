@@ -18,6 +18,7 @@ export class WidgetTotaleCasiComponent implements OnInit {
     y: 0,
     x: 0,
     resizeEnabled: false,
+    dragEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_CASI'
   };

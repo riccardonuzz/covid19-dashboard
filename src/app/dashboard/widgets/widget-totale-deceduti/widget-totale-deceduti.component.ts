@@ -18,6 +18,7 @@ export class WidgetTotaleDecedutiComponent implements OnInit {
     y: 0,
     x: 3,
     resizeEnabled: false,
+    dragEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_DECEDUTI'
   };

@@ -17,6 +17,8 @@ export class WidgetBulletinListComponent implements OnInit {
     minItemRows: 2,
     y: 1,
     x: 2,
+    resizeEnabled: false,
+    dragEnabled: false,
     type: 'WIDGET_LISTA_BOLLETTINI'
   };
 

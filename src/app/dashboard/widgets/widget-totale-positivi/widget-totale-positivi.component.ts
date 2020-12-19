@@ -18,6 +18,7 @@ export class WidgetTotalePositiviComponent implements OnInit {
     y: 0,
     x: 1,
     resizeEnabled: false,
+    dragEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_POSITIVI'
   };

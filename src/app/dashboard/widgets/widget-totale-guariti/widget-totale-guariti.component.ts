@@ -18,6 +18,7 @@ export class WidgetTotaleGuaritiComponent implements OnInit {
     y: 0,
     x: 2,
     resizeEnabled: false,
+    dragEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_GUARITI'
   };

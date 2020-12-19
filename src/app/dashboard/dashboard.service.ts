@@ -85,6 +85,7 @@ export class DashboardService {
     const dashboardLayout = JSON.parse(localStorage.getItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY)) as GridsterItem[];
     const widgetListSize = WidgetRegistry.getWidgetList().length;
     if (dashboardLayout) {
+      // if available widget change, setup again dashboard
       if (widgetListSize !== dashboardLayout.length) {
         localStorage.removeItem(this.LOCAL_STORAGE_DASHBOARD_LAYOUT_KEY);
         this.loadDefaultDashboardConfiguration();

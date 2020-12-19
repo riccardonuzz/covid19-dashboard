@@ -21,12 +21,8 @@ export class HeaderComponent implements OnInit {
     this.themeSubscription = this.themeService.getActiveTheme()
       .pipe(take(1))
       .subscribe((activeTheme) => {
-        if (activeTheme === SupportedThemes.LIGHT_THEME)
-          this.enabled = false;
-        else
-          this.enabled = true;
+        this.enabled = !(activeTheme === SupportedThemes.LIGHT_THEME)
       });
-
       this.checkLockedEnabled();
   }
 

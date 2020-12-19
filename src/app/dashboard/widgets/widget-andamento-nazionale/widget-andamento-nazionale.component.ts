@@ -21,6 +21,8 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
     minItemCols: 2,
     y: 1,
     x: 0,
+    resizeEnabled: false,
+    dragEnabled: false,
     type: 'WIDGET_ANDAMENTO_NAZIONALE'
   };
 

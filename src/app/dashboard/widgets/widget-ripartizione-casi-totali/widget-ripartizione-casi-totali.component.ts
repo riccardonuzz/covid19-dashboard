@@ -21,6 +21,8 @@ export class WidgetRipartizioneCasiTotaliComponent implements OnInit {
     minItemRows: 2,
     y: 1,
     x: 4,
+    resizeEnabled: false,
+    dragEnabled: false,
     type: 'WIDGET_RIPARTIZIONE_CASI_TOTALI'
   };
 

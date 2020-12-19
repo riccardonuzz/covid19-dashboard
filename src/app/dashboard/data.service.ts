@@ -34,7 +34,7 @@ export class DataService {
     return this.cachedAndamentoNazionale$;
   }
 
-  public getDatiRegioniLatest() {
+  public getDatiRegioniLatest(): Observable<DatiRegione[]> {
     return this.httpClient.get<DatiRegione[]>('/dpc-covid19-ita-regioni-latest.json');
   }
 }

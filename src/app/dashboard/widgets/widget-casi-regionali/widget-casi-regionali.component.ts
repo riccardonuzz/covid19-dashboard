@@ -25,6 +25,8 @@ export class WidgetCasiRegionaliComponent implements OnInit {
     minItemRows: 4,
     y: 1,
     x: 2,
+    resizeEnabled: false,
+    dragEnabled: false,
     type: 'WIDGET_CASI_REGIONALI'
   };
 
@@ -54,7 +56,7 @@ export class WidgetCasiRegionaliComponent implements OnInit {
   ngOnInit() {
     const datiRegioneLatest = this.dataService.getDatiRegioniLatest();
     const activeTheme = this.themeService.getActiveTheme();
-    combineLatest(datiRegioneLatest, activeTheme)
+    combineLatest([datiRegioneLatest, activeTheme])
       .pipe(take(1))
       .subscribe(([datiRegione, activeTheme]) => {
         this.datiRegione = datiRegione;

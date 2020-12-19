@@ -18,6 +18,7 @@ export class WidgetTotaleTerapiaIntensivaComponent implements OnInit {
     y: 0,
     x: 4,
     resizeEnabled: false,
+    dragEnabled: false,
     compactEnabled: true,
     type: 'WIDGET_TOTALE_TERAPIA_INTENSIVA'
   };

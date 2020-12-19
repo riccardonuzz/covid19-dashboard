@@ -23,6 +23,8 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
     minItemRows: 1,
     y: 3,
     x: 0,
+    resizeEnabled: false,
+    dragEnabled: false,
     type: 'WIDGET_ANDAMENTO_VARIAZIONI'
   };
 
