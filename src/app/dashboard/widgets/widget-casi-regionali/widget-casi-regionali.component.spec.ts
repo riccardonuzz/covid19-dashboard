@@ -1,15 +1,17 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { DataService } from '../../data.service';
+import { CardComponent } from '../card/card.component';
+import { TabComponent } from '../tab/tab.component';
 import { WidgetCasiRegionaliComponent } from './widget-casi-regionali.component';
 
 const mockedDatiRegionali = [
   {
-    data: new Date("2020-12-18T17:00:00"),
-    stato: "ITA",
+    data: new Date('2020-12-18T17:00:00'),
+    stato: 'ITA',
     codice_regione: 13,
-    denominazione_regione: "Abruzzo",
-    lat:42.35122196,
+    denominazione_regione: 'Abruzzo',
+    lat: 42.35122196,
     long: 13.39843823,
     ricoverati_con_sintomi: 559,
     terapia_intensiva: 42,
@@ -20,21 +22,21 @@ const mockedDatiRegionali = [
     nuovi_positivi: 227,
     dimessi_guariti: 18815,
     deceduti: 1111,
-    casi_da_sospetto_diagnostico:null,
-    casi_da_screening:null,
+    casi_da_sospetto_diagnostico: null,
+    casi_da_screening: null,
     totale_casi: 33101,
-    tamponi:480066,
-    casi_testati:259774,
+    tamponi: 480066,
+    casi_testati: 259774,
     note: null,
     ingressi_terapia_intensiva: 3,
     note_test: null,
     note_casi: null
   },
   {
-    data : new Date("2020-12-18T17:00:00"),
-    stato : "ITA",
+    data : new Date('2020-12-18T17:00:00'),
+    stato : 'ITA',
     codice_regione : 17,
-    denominazione_regione : "Basilicata",
+    denominazione_regione : 'Basilicata',
     lat : 40.63947052,
     long : 15.80514834,
     ricoverati_con_sintomi : 99,
@@ -53,7 +55,7 @@ const mockedDatiRegionali = [
     casi_testati : 112879,
     note : null,
     ingressi_terapia_intensiva : 1,
-    note_test : "N.B. DATO PERSONE TESTATE RICALCOLATO E DERIVATO DA VERIFICA PIATTAFORMA COVID 19 REGIONE BASILICATA.",
+    note_test : 'N.B. DATO PERSONE TESTATE RICALCOLATO E DERIVATO DA VERIFICA PIATTAFORMA COVID 19 REGIONE BASILICATA.',
     note_casi : null
   }
 ];
@@ -71,7 +73,11 @@ describe('WidgetCasiRegionaliComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WidgetCasiRegionaliComponent],
+      declarations: [
+        CardComponent,
+        TabComponent,
+        WidgetCasiRegionaliComponent
+      ],
       providers: [
         { provide: DataService, useClass: MockedDataService }
     ]
