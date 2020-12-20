@@ -1,23 +1,24 @@
 gridster {
     margin-top: 5px;
     background: transparent;
-    height: calc(100vh - 130px);
+    height: calc(100vh - 151px);
 }
 
 gridster.scrollVertical::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--theme-widget-border);
+    background-color: var(--theme-chart-palette-1);
 }
 
 
 gridster.scrollVertical::-webkit-scrollbar {
-	width: 12px;
+    width: 12px;
 }
 
 gridster.scrollVertical::-webkit-scrollbar-thumb {
     border-radius: 10px;
-	background-color: var(--theme-primary-color);
+    background-color: var(--theme-primary-color);
+    border: 1px solid var(--theme-widget-border);
 }
 
 gridster-item {

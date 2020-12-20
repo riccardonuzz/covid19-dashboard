@@ -9,11 +9,11 @@ export interface ThemeProperties {
 
 export type ThemesCollection = {
     [key in SupportedThemes]: ThemeProperties;
-}
+};
 
 export const themes: ThemesCollection = {
     lightTheme: {
-        '--theme-background': '#cce7e8',
+        '--theme-background': 'white',
         '--theme-primary-color': 'white',
         '--theme-secondary-color': '#3a9bcf',
 
@@ -34,7 +34,7 @@ export const themes: ThemesCollection = {
 
         '--theme-primary-text-color': 'white',
         '--theme-primary-text-color-contrast': 'white',
-        
+
         '--theme-widget-border': 'transparent',
         '--theme-highlight-color': 'yellow',
 
