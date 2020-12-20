@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { GridsterItem } from 'angular-gridster2';
 import { Observable, Subscription } from 'rxjs';
 import { DataService } from '../../data.service';
@@ -13,7 +13,7 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./widget-andamento-nazionale.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class WidgetAndamentoNazionaleComponent implements OnInit {
+export class WidgetAndamentoNazionaleComponent implements OnInit, OnDestroy {
   static config: GridsterItem = {
     cols: 2,
     rows: 2,
@@ -48,7 +48,11 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
     domain: []
   };
 
-  constructor(private dataService: DataService, private themeService: ThemeService, private datePipe: DatePipe) { }
+  constructor(
+    private dataService: DataService,
+    private themeService: ThemeService,
+    private datePipe: DatePipe
+  ) { }
 
   ngOnInit() {
     this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
@@ -58,7 +62,7 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
           themes[activeTheme]['--theme-chart-palette-2'],
           themes[activeTheme]['--theme-chart-palette-3']
         ]
-      }
+      };
     });
 
     this.dashboardUpdateSubscription = this.dashboardUpdate$.subscribe((dashboardUpdate: GridsterItem) => {
@@ -73,30 +77,30 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
 
   mapDataToChart(andamentoNazionale: AndamentoNazionale[]) {
     const andamentoTotalePositivi = {
-      name: "Totale positivi",
+      name: 'Totale positivi',
       series: []
     };
     const andamentoDeceduti = {
-      name: "Totale deceduti",
+      name: 'Totale deceduti',
       series: []
     };
     const andamentoDimessiGuariti = {
-      name: "Totale dimessi/guariti",
+      name: 'Totale dimessi/guariti',
       series: []
     };
 
-    andamentoNazionale.forEach((andamentoNazionale: AndamentoNazionale) => {
+    andamentoNazionale.forEach((singleAndamentoNazionale: AndamentoNazionale) => {
       andamentoTotalePositivi.series.push({
-        name: this.datePipe.transform(andamentoNazionale.data),
-        value: andamentoNazionale.totale_positivi
+        name: this.datePipe.transform(singleAndamentoNazionale.data),
+        value: singleAndamentoNazionale.totale_positivi
       });
       andamentoDeceduti.series.push({
-        name: this.datePipe.transform(andamentoNazionale.data),
-        value: andamentoNazionale.deceduti
+        name: this.datePipe.transform(singleAndamentoNazionale.data),
+        value: singleAndamentoNazionale.deceduti
       });
       andamentoDimessiGuariti.series.push({
-        name: this.datePipe.transform(andamentoNazionale.data),
-        value: andamentoNazionale.dimessi_guariti
+        name: this.datePipe.transform(singleAndamentoNazionale.data),
+        value: singleAndamentoNazionale.dimessi_guariti
       });
     });
 
@@ -108,7 +112,8 @@ export class WidgetAndamentoNazionaleComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.dashboardUpdateSubscription)
+    if (this.dashboardUpdateSubscription) {
       this.dashboardUpdateSubscription.unsubscribe();
+    }
   }
 }

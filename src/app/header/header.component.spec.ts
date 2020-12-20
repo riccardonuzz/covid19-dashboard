@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { HeaderComponent } from './header.component';
-import { ThemeService } from '../theme/theme.service';
 import { of } from 'rxjs';
+import { DashboardService } from '../dashboard/dashboard.service';
+import { WidgetTotaleCasiComponent } from '../dashboard/widgets/widget-totale-casi/widget-totale-casi.component';
+import { ThemeService } from '../theme/theme.service';
 import { SupportedThemes } from '../theme/themes';
+import { HeaderComponent } from './header.component';
 import { ToggleButtonComponent } from './toggle-button/toggle-button.component';
 
 class MockedThemeService {
@@ -12,7 +13,15 @@ class MockedThemeService {
     return of(MockedThemeService.currentTheme);
   }
 
-  public setActiveTheme(theme: SupportedThemes) {}
+  public setActiveTheme(theme: SupportedThemes) { }
+}
+
+class MockedDashboardService {
+  enableWidgetEditing() { }
+
+  getDashboard() {
+    return [WidgetTotaleCasiComponent.config];
+  }
 }
 
 describe('HeaderComponent', () => {
@@ -23,7 +32,8 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ToggleButtonComponent, HeaderComponent],
       providers: [
-        { provide: ThemeService, useClass: MockedThemeService }
+        { provide: ThemeService, useClass: MockedThemeService },
+        { provide: DashboardService, useClass: MockedDashboardService }
       ]
     }).compileComponents();
   }));
@@ -59,6 +69,7 @@ describe('HeaderComponent', () => {
 
   it('Should correctly unsubscribe from service', () => {
     component.ngOnInit();
+    fixture.detectChanges();
     component.ngOnDestroy();
     expect(component.themeSubscription.closed).toBe(true);
   });

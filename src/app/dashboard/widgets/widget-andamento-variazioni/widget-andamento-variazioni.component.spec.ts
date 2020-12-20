@@ -1,24 +1,24 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { WidgetAndamentoVariazioniComponent } from './widget-andamento-variazioni.component';
+import { DatePipe } from '@angular/common';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { Subject, of } from 'rxjs';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { CardComponent } from '../card/card.component';
-import { DataService } from '../../data.service';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { of, Subject  } from 'rxjs';
+
 import { ThemeService } from 'src/app/theme/theme.service';
-import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { SupportedThemes, themes } from 'src/app/theme/themes';
-import { TabComponent } from '../tab/tab.component';
-import { ChartData } from '../models/chart';
+import { DataService } from '../../data.service';
+import { CardComponent } from '../card/card.component';
+import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { SelectedData } from '../models/SelectedData';
+import { TabComponent } from '../tab/tab.component';
+import { WidgetAndamentoVariazioniComponent } from './widget-andamento-variazioni.component';
 
 
 const mockedAndamentoNazionale: AndamentoNazionale[] = [
     {
-        data: new Date("2020-02-24T18:00:00"),
-        stato: "ITA",
+        data: new Date('2020-02-24T18:00:00'),
+        stato: 'ITA',
         ricoverati_con_sintomi: 101,
         terapia_intensiva: 26,
         totale_ospedalizzati: 127,
@@ -30,12 +30,12 @@ const mockedAndamentoNazionale: AndamentoNazionale[] = [
         deceduti: 7,
         totale_casi: 229,
         tamponi: 4324,
-        note_it: "",
-        note_en: ""
+        note_it: '',
+        note_en: ''
     },
     {
-        data: new Date("2020-02-25T18:00:00"),
-        stato: "ITA",
+        data: new Date('2020-02-25T18:00:00'),
+        stato: 'ITA',
         ricoverati_con_sintomi: 114,
         terapia_intensiva: 35,
         totale_ospedalizzati: 150,
@@ -47,8 +47,8 @@ const mockedAndamentoNazionale: AndamentoNazionale[] = [
         deceduti: 10,
         totale_casi: 322,
         tamponi: 8623,
-        note_it: "",
-        note_en: ""
+        note_it: '',
+        note_en: ''
     }
 ];
 
@@ -78,7 +78,7 @@ const variazioneDeceduti = [{
 
 class MockedDataService {
     getAndamentoNazionale() {
-        return of(mockedAndamentoNazionale)
+        return of(mockedAndamentoNazionale);
     }
 }
 
@@ -89,6 +89,12 @@ class MockedThemeService {
     }
 
     public setActiveTheme(theme: SupportedThemes) { }
+}
+
+class MockedDatePipe {
+    transform(date: Date) {
+        return date.toString();
+    }
 }
 
 describe('WidgetAndamentoVariazioniComponent', () => {
@@ -109,7 +115,8 @@ describe('WidgetAndamentoVariazioniComponent', () => {
             ],
             providers: [
                 { provide: DataService, useClass: MockedDataService },
-                { provide: ThemeService, useClass: MockedThemeService }
+                { provide: ThemeService, useClass: MockedThemeService },
+                { provide: DatePipe, useClass: MockedDatePipe }
             ]
         })
         .compileComponents();

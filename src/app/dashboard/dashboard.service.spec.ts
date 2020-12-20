@@ -59,9 +59,14 @@ describe('DashboardService', () => {
         ];
 
         mockedLocalStorage.setItem('dashboardLayout', JSON.stringify(mockedDashboardConfig));
+        const mockedRegistry = WidgetRegistry.getWidgetList();
 
         spyOn(localStorage, 'getItem')
             .and.callFake(mockedLocalStorage.getItem);
+
+        spyOn(WidgetRegistry, 'getWidgetList')
+            .and.callFake(() => [mockedRegistry[0], mockedRegistry[6]]);
+
         service.initializeDashboard();
 
         expect(service.getDashboard().length).toEqual(2);

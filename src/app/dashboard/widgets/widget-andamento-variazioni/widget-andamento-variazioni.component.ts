@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnDestroy } from '@angular/core';
 import { GridsterItem } from 'angular-gridster2';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { DataService } from '../../data.service';
@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
   templateUrl: './widget-andamento-variazioni.component.html',
   styleUrls: ['./widget-andamento-variazioni.component.scss']
 })
-export class WidgetAndamentoVariazioniComponent implements OnInit {
+export class WidgetAndamentoVariazioniComponent implements OnInit, OnDestroy {
   static config: GridsterItem = {
     cols: 3,
     rows: 3,
@@ -55,13 +55,13 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
   // Tabs options
   tabs: Tab[] = [{
     id: SelectedData.VARIAZIONE_POSITIVI,
-    name: "Positivi"
+    name: 'Positivi'
   }, {
     id: SelectedData.VARIAZIONE_GUARITI,
-    name: "Guariti"
+    name: 'Guariti'
   }, {
     id: SelectedData.VARIAZIONE_DECEDUTI,
-    name: "Deceduti"
+    name: 'Deceduti'
   }];
 
   constructor(
@@ -74,7 +74,7 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
     this.themeService.getActiveTheme().subscribe((activeTheme: SupportedThemes) => {
       this.colorScheme = {
         domain: [themes[activeTheme]['--theme-chart-palette-1']]
-      }
+      };
     });
 
     this.dashboardUpdateSubscription = this.dashboardUpdate$.subscribe((dashboardUpdate: GridsterItem) => {
@@ -108,7 +108,7 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
       return {
         name: singleAndamentoNazionale.data.toString(),
         value: singleAndamentoNazionale.deceduti - andamentoNazionaleWholeData[i - 1].deceduti
-      }
+      };
     });
   }
 
@@ -123,7 +123,7 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
       return {
         name: singleAndamentoNazionale.data.toString(),
         value: singleAndamentoNazionale.dimessi_guariti - andamentoNazionaleWholeData[i - 1].dimessi_guariti
-      }
+      };
     });
   }
 
@@ -143,8 +143,9 @@ export class WidgetAndamentoVariazioniComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.dashboardUpdateSubscription)
+    if (this.dashboardUpdateSubscription) {
       this.dashboardUpdateSubscription.unsubscribe();
+    }
   }
 
 }

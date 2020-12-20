@@ -10,12 +10,13 @@ import { DataService } from '../../data.service';
 import { ThemeService } from 'src/app/theme/theme.service';
 import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { SupportedThemes, themes } from 'src/app/theme/themes';
+import { DatePipe } from '@angular/common';
 
 
 const mockedAndamentoNazionale: AndamentoNazionale[] = [
     {
-        data: new Date("2020-02-24T18:00:00"),
-        stato: "ITA",
+        data: new Date('2020-02-24T18:00:00'),
+        stato: 'ITA',
         ricoverati_con_sintomi: 101,
         terapia_intensiva: 26,
         totale_ospedalizzati: 127,
@@ -27,12 +28,12 @@ const mockedAndamentoNazionale: AndamentoNazionale[] = [
         deceduti: 7,
         totale_casi: 229,
         tamponi: 4324,
-        note_it: "",
-        note_en: ""
+        note_it: '',
+        note_en: ''
     },
     {
-        data: new Date("2020-02-25T18:00:00"),
-        stato: "ITA",
+        data: new Date('2020-02-25T18:00:00'),
+        stato: 'ITA',
         ricoverati_con_sintomi: 114,
         terapia_intensiva: 35,
         totale_ospedalizzati: 150,
@@ -44,38 +45,38 @@ const mockedAndamentoNazionale: AndamentoNazionale[] = [
         deceduti: 10,
         totale_casi: 322,
         tamponi: 8623,
-        note_it: "",
-        note_en: ""
+        note_it: '',
+        note_en: ''
     }
 ];
 
 
 const chartData = [
     {
-        name: "Totale positivi",
+        name: 'Totale positivi',
         series: [{
-            name: mockedAndamentoNazionale[0].data,
+            name: mockedAndamentoNazionale[0].data.toString(),
             value: mockedAndamentoNazionale[0].totale_positivi
         }, {
-            name: mockedAndamentoNazionale[1].data,
+            name: mockedAndamentoNazionale[1].data.toString(),
             value: mockedAndamentoNazionale[1].totale_positivi
         }]
     }, {
-        name: "Totale deceduti",
+        name: 'Totale deceduti',
         series: [{
-            name: mockedAndamentoNazionale[0].data,
+            name: mockedAndamentoNazionale[0].data.toString(),
             value: mockedAndamentoNazionale[0].deceduti
         }, {
-            name: mockedAndamentoNazionale[1].data,
+            name: mockedAndamentoNazionale[1].data.toString(),
             value: mockedAndamentoNazionale[1].deceduti
         }]
     }, {
-        name: "Totale dimessi/guariti",
+        name: 'Totale dimessi/guariti',
         series: [{
-            name: mockedAndamentoNazionale[0].data,
+            name: mockedAndamentoNazionale[0].data.toString(),
             value: mockedAndamentoNazionale[0].dimessi_guariti
         }, {
-            name: mockedAndamentoNazionale[1].data,
+            name: mockedAndamentoNazionale[1].data.toString(),
             value: mockedAndamentoNazionale[1].dimessi_guariti
         }]
     }
@@ -83,7 +84,7 @@ const chartData = [
 
 class MockedDataService {
     getAndamentoNazionale() {
-        return of(mockedAndamentoNazionale)
+        return of(mockedAndamentoNazionale);
     }
 }
 
@@ -96,6 +97,12 @@ class MockedThemeService {
     public setActiveTheme(theme: SupportedThemes) { }
 }
 
+class MockedDatePipe {
+    transform(date: Date) {
+        return date.toString();
+    }
+}
+
 describe('WidgetAndamentoNazionaleComponent', () => {
     let component: WidgetAndamentoNazionaleComponent;
     let fixture: ComponentFixture<WidgetAndamentoNazionaleComponent>;
@@ -106,7 +113,8 @@ describe('WidgetAndamentoNazionaleComponent', () => {
             declarations: [CardComponent, WidgetAndamentoNazionaleComponent],
             providers: [
                 { provide: DataService, useClass: MockedDataService },
-                { provide: ThemeService, useClass: MockedThemeService }
+                { provide: ThemeService, useClass: MockedThemeService },
+                { provide: DatePipe, useClass: MockedDatePipe }
             ]
         })
             .compileComponents();

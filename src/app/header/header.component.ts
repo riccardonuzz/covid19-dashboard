@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ThemeService } from '../theme/theme.service';
 import { SupportedThemes } from '../theme/themes';
 import { take } from 'rxjs/operators';
@@ -10,7 +10,7 @@ import { DashboardService } from '../dashboard/dashboard.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   enabled: boolean;
   locked: boolean = true;
   themeSubscription: Subscription;
@@ -21,9 +21,9 @@ export class HeaderComponent implements OnInit {
     this.themeSubscription = this.themeService.getActiveTheme()
       .pipe(take(1))
       .subscribe((activeTheme) => {
-        this.enabled = !(activeTheme === SupportedThemes.LIGHT_THEME)
+        this.enabled = !(activeTheme === SupportedThemes.LIGHT_THEME);
       });
-      this.checkLockedEnabled();
+    this.checkLockedEnabled();
   }
 
   onToggle(enabled: boolean) {
@@ -46,8 +46,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    if (this.themeSubscription)
+    if (this.themeSubscription) {
       this.themeSubscription.unsubscribe();
+    }
   }
 
 }
