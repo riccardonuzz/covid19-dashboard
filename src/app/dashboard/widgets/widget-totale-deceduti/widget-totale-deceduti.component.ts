@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GridsterItem } from 'angular-gridster2';
-import { AndamentoNazionale } from '../models/andamento-nazionale';
 import { DataService } from '../../data.service';
+import { AndamentoNazionale } from '../models/andamento-nazionale';
 
 @Component({
   selector: 'app-widget-totale-deceduti',
@@ -30,8 +30,9 @@ export class WidgetTotaleDecedutiComponent implements OnInit {
   ngOnInit() {
     this.dataService.getAndamentoNazionale()
       .subscribe((andamentoNazionale: AndamentoNazionale[]) => {
-        if (andamentoNazionale.length > 0)
+        if (andamentoNazionale.length > 0) {
           this.andamentoNazionale = andamentoNazionale[andamentoNazionale.length - 1];
+        }
       });
   }
 

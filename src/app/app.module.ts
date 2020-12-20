@@ -18,7 +18,7 @@ import { GenericWidgetComponent } from './dashboard/widgets/generic-widget/gener
 import { GenericWidgetDirective } from './dashboard/widgets/generic-widget/generic-widget-directive/generic-widget.directive';
 import { HttpInterceptorService } from './http-interceptor.service';
 
-import { registerLocaleData, DatePipe } from '@angular/common';
+import { registerLocaleData, DatePipe, DecimalPipe } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 import localeItExtra from '@angular/common/locales/extra/it';
 import { TabComponent } from './dashboard/widgets/tab/tab.component';
@@ -70,7 +70,8 @@ registerLocaleData(localeIt, 'it-IT', localeItExtra);
       useClass: HttpInterceptorService,
       multi: true,
     },
-    DatePipe
+    DatePipe,
+    DecimalPipe
   ],
   bootstrap: [AppComponent]
 })

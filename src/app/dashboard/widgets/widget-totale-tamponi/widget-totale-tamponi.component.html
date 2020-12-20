@@ -1,7 +1,7 @@
 <app-card *ngIf="andamentoNazionale" title="Tamponi effettuati">
     <div body>
         <div class="section">
-            <div class="big-title">{{andamentoNazionale.tamponi}}</div>
+            <div class="big-title">{{andamentoNazionale.tamponi | number}}</div>
             <div class="trend">
                 + {{nuoviTamponi | number}}
                 <i class="lnr lnr-arrow-up"></i>

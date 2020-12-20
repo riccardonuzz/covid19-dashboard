@@ -2,9 +2,9 @@
     <i class="lnr lnr-warning" title-icon></i>
     <div body>
         <div class="section">
-            <div class="big-title">{{andamentoNazionale.totale_positivi}}</div>
+            <div class="big-title">{{andamentoNazionale.totale_positivi | number}}</div>
             <div class="trend">
-                + {{andamentoNazionale.nuovi_positivi}}
+                + {{andamentoNazionale.nuovi_positivi | number}}
                 <i class="lnr lnr-arrow-up"></i>
             </div>
         </div>
