@@ -1,5 +1,5 @@
 # Covid-19 Dashboard
-Link: [riccardonuzz.github.io/covid19-dashboard](riccardonuzz.github.io/covid19-dashboard)
+Link: [http://riccardonuzz.github.io/covid19-dashboard](http://riccardonuzz.github.io/covid19-dashboard)
 <img src="https://riccardonuzz.github.io/covid19-dashboard/assets/images/covid.png" width="200">
 
 ### Features
